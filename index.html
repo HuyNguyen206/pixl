@@ -13,9 +13,8 @@
          class="absolute inset-y-0 left-[15%] h-full w-full object-cover mask-1-from-80% opacity-30" alt="">
 </div>
 <main class="grid place-items-center h-full isolate max-w-[1000px] mx-auto">
-    <div class="flex gap-16 justify-between w-full px-8 pb-16">
-        <div>
-            <div class="flex gap-3 item-baseline">
+    <div class="flex flex-col items-center md:flex-row gap-16 justify-between w-full px-8 pb-16">
+            <div class="flex gap-3 item-baseline items-center justify-between">
                 <svg class="w-36 h-36 text-gray-800 dark:text-white" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -25,14 +24,44 @@
                           clip-rule="evenodd"/>
                 </svg>
 
-                <div class="">
-                    <p>Word stack</p>
+                <div class="hidden md:block aria-hidden uppercase text-4xl text-pixl relative ">
+                    <div class="absolute opacity-20 bottom-full bg-pixl/20 flex flex-col gap-4">
+
+                        <div class="flex flex-col gap-4 opacity-50">
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Art</p>
+                            <p>Writer</p>
+                        </div>
+
+                        <p>Media</p>
+
+                    </div>
+                    <p class="my-4">Everyone</p>
+                    <div class="absolute opacity-20 flex flex-col gap-4">
+                        <p>Media</p>
+                        <p>Writer</p>
+                        <div class="flex flex-col gap-4 opacity-50">
+                            <p>Code</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                            <p>Designer</p>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="w-80 max-w-full">
+        <div class="min-[360px]:w-72 sm:w-80 max-w-full flex flex-col items-center text-center">
             <h1 class="text-3xl text-pixl">A place for the cool square</h1>
-            <div class="flex flex-col gap-3 mt-16 w-68 text-center ">
+            <div class="flex flex-col gap-3 mt-16 md:w-68 text-center ">
                 <a href="#" class="bg-pixl-dark/50 hover:bg-pixl-dark/75 border border-pixl/50 hover:border-pixl/75 active:border-pixl/85 px-4 py-1.5 text-pixl">Sign in with Google</a>
                 <a href="#" class="bg-pixl-dark/50 hover:bg-pixl-dark/75 border border-pixl/50 hover:border-pixl/75 active:border-pixl/85 px-4 py-1.5 text-pixl">Sign in with Apple</a>
                 <p>or</p>
@@ -44,7 +73,7 @@
     </div>
 </main>
 <footer class="fixed inset-x-0 bottom-0 pb-3">
-    <div class="flex flex-col gap-1.5 items-center text-pixl p-4">
+    <div class="flex flex-col gap-1.5 md:items-center items-left text-pixl p-4">
         <p>All right reserve. Pixl media for everyone</p>
         <p class="opacity-50 text-xs">*except for badger, they are</p>
     </div>

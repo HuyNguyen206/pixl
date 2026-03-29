@@ -6,13 +6,13 @@
     <title>PIXL</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="p-2 bg-pixl-dark text-pixl-light h-dvh w-full overflow-clip">
+<body class="p-2 bg-pixl-dark text-pixl-light h-dvh w-full md:overflow-clip">
 
-<div class="absolute inset-0 overflow-clip">
+<div class="fixed inset-0 overflow-clip">
     <img src="/images/Official-Login-BG.png"
          class="absolute inset-y-0 left-[15%] h-full w-full object-cover mask-1-from-80% opacity-30" alt="">
 </div>
-<main class="grid place-items-center h-full isolate max-w-[1000px] mx-auto">
+<main class="grid place-items-center h-full isolate max-w-[1000px] xl:max-w-6xl mx-auto">
     <div class="flex flex-col items-center md:flex-row gap-16 justify-between w-full px-8 pb-16">
             <div class="flex gap-3 item-baseline items-center justify-between">
                 <svg class="w-36 h-36 text-gray-800 dark:text-white" aria-hidden="true"
@@ -72,12 +72,13 @@
         </div>
     </div>
 </main>
-<footer class="fixed inset-x-0 bottom-0 pb-3">
+<footer class="md:fixed md:inset-x-0 md:bottom-0 pb-3 relative">
     <div class="flex flex-col gap-1.5 md:items-center items-left text-pixl p-4">
         <p>All right reserve. Pixl media for everyone</p>
         <p class="opacity-50 text-xs">*except for badger, they are</p>
     </div>
     <div class="absolute bottom-0 h-4 inset-x-0 bg-[url(/images/white-noise.gif)]"></div>
+    <span class="absolute right-0 top-0 pt-4 pr-4 text-2xl grayscale max-sm:hidden">X</span>
 </footer>
 </body>
 </html>

@@ -40,7 +40,7 @@
 
 </svg>
 </header>
-<main class="flex flex-col gap-4 overflow-y-auto grow">
+<main class="flex flex-col gap-4 overflow-y-auto grow px-0.5">
     <nav>
         <ul class="flex justify-end gap-4">
             <li><a href="" class="hover:text-pixl-light text-pixl-light/50">Home</a></li>
@@ -48,6 +48,28 @@
             <li><a href="" class="hover:text-pixl-light text-pixl-light/50">Following</a></li>
         </ul>
     </nav>
+    <div class="flex gap-2 border-b border-b-pixl-light/10 pb-4">
+        <img class="size-10 object-cover" src="/images/avatar.png" alt="">
+
+        <form action="" class="mt-4 grow">
+            <label for="post" class="sr-only">Post body</label>
+            <div class="flex gap-2 justify-start items-center">
+                <textarea cols="30" rows="5" id="post" class="border-none w-full resize-none" placeholder="What's on your mind?"></textarea>
+            </div>
+            <div class="flex justify-between">
+                <div class="flex gap-2">
+                    <button>
+                        <img class="w-18" src="/images/avatar.png" alt="">
+                    </button>
+                    <button>
+                        <img class="w-18" src="/images/avatar.png" alt="">
+                    </button>
+                </div>
+                <input type="submit" class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark" value="Post">
+            </div>
+        </form>
+    </div>
+
 
 </main>
 <aside class="bg-pixl/50 w-80 shrink-0 p-2 overflow-y-auto">

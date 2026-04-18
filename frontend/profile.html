@@ -39,54 +39,81 @@
             </ol>
         </nav>
     </div>
-<div class="flex gap-4 pb-10">
-    <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
-    <div class="flex flex-col gap-2">
-        <p>_adrian</p>
-        <p class="text-pixl-light/40">@tydsss</p>
+<!--     Button   -->
+    <div class="flex flex-col gap-4 pb-10">
+        <button class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark text-center">Post</button>
+        <div class="flex gap-4 pb-10">
+            <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
+            <div class="flex flex-col gap-2">
+                <p>_adrian</p>
+                <p class="text-pixl-light/40">@tydsss</p>
+            </div>
+            <button class="flex gap-2">
+                <span class="w-1 h-1 bg-pixl-light/20"></span>
+                <span class="w-1 h-1 bg-pixl-light/20"></span>
+                <span class="w-1 h-1 bg-pixl-light/20"></span>
+            </button>
+        </div>
+
     </div>
-    <button class="flex gap-2">
-        <span class="w-1 h-1 bg-pixl-light/20"></span>
-        <span class="w-1 h-1 bg-pixl-light/20"></span>
-        <span class="w-1 h-1 bg-pixl-light/20"></span>
-    </button>
-</div>
+<!--    Button end-->
 </header>
 <main class="flex flex-col gap-4 overflow-y-auto grow px-4">
-    <nav class="">
-        <ul class="flex justify-end gap-4">
-            <li><a href="" class="hover:text-pixl-light text-pixl-light/50">Home</a></li>
-            <li><a href="" class="hover:text-pixl-light text-pixl-light/50">Idea streaming</a></li>
-            <li><a href="" class="hover:text-pixl-light text-pixl-light/50">Following</a></li>
-        </ul>
-    </nav>
-    <div class="flex gap-2 mb-4">
-        <img class="size-10 object-cover" src="/images/avatar.png" alt="">
+    <a href="" class="flex gap-2 group">
+        <div class="text-pixl-light/40"><<</div>
+        <span class="group-hover:underline">
+                back
+            </span>
+    </a>
 
-        <form action="" class="mt-4 grow">
-            <label for="post" class="sr-only">Post body</label>
-            <div class="flex gap-2 justify-start items-center">
-                <textarea cols="30" rows="5" id="post" class="border-none w-full resize-none"
-                          placeholder="What's on your mind?"></textarea>
-            </div>
-            <div class="flex justify-between">
-                <div class="flex gap-2 mt-2">
-                    <button>
-                        <svg class="w-8" viewBox="0 0 32 32" version="1.1" fill="currentColor"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M30 2.497h-28c-1.099 0-2 0.901-2 2v23.006c0 1.099 0.9 2 2 2h28c1.099 0 2-0.901 2-2v-23.006c0-1.099-0.901-2-2-2zM30 27.503l-28-0v-5.892l8.027-7.779 8.275 8.265c0.341 0.414 0.948 0.361 1.379 0.035l3.652-3.306 6.587 6.762c0.025 0.025 0.053 0.044 0.080 0.065v1.85zM30 22.806l-5.876-6.013c-0.357-0.352-0.915-0.387-1.311-0.086l-3.768 3.282-8.28-8.19c-0.177-0.214-0.432-0.344-0.709-0.363-0.275-0.010-0.547 0.080-0.749 0.27l-7.309 7.112v-14.322h28v18.309zM23 12.504c1.102 0 1.995-0.894 1.995-1.995s-0.892-1.995-1.995-1.995-1.995 0.894-1.995 1.995c0 1.101 0.892 1.995 1.995 1.995z"></path>
-                        </svg>
-                    </button>
-                    <button>
-                        <svg class="w-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z"
-                                  stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
+    <img src="/public/images/cover.png" alt="">
+
+    <div class="-mt-20 flex flex-col gap-5 [&_a]:text-pixl [&_a]:hover:underline">
+        <!--       User profile start-->
+        <div class="flex flex-wrap flex-row justify-between gap-2 items-end">
+            <div class="flex gap-4 items-end">
+                <img class="md:size-30 lg:40 size-20 object-cover" src="/images/adelle.png" alt="">
+                <div class="flex flex-col gap-2">
+                    <p>_adelle</p>
+                    <p class="text-pixl-light/40">@tydsss</p>
                 </div>
-                <input type="submit" class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark" value="Post">
             </div>
-        </form>
+            <a href="#" class="bg-pixl-light/10 border border-transparent px-4 py-0.5">Edit profile</a>
+        </div>
+        <!--       User profile end-->
+
+        <p>I design <a href="#">@Laracasts</a> so hit me up whenever =]</p>
+        <div class="flex gap-6 text-sm">
+            <div class="flex gap-2">
+                <p>100</p>
+                <p class="text-pixl-light/40">Following</p>
+            </div>
+            <div class="flex gap-2">
+                <p>2190</p>
+                <p class="text-pixl-light/40">Followers</p>
+            </div>
+        </div>
+
+        <!-- Navigation tab-->
+        <ul class="flex gap-6 justify-end">
+            <li>
+                <a href="" class="text-pixl-light/60!">Posts</a>
+            </li>
+            <li>
+                <a href="" class="text-pixl-light/60!">Replies</a>
+            </li>
+            <li>
+                <a href="" class="text-pixl-light/60!">Highlight</a>
+            </li>
+            <li>
+                <a href="" class="text-pixl-light/60!">Inspiration</a>
+            </li>
+            <li>
+                <a href="" class="text-pixl-light/60!">Stream</a>
+            </li>
+        </ul>
+        <!-- Navigation end tab-->
+
     </div>
     <!--Thread status start-->
     <ul class="flex flex-col gap-2">
@@ -251,7 +278,7 @@
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                   d="M6.75 6L7.5 5.25H16.5L17.25 6V19.3162L12 16.2051L6.75 19.3162V6ZM8.25 6.75V16.6838L12 14.4615L15.75 16.6838V6.75H8.25Z"
-                                                 />
+                                            />
                                         </svg>
                                     </button>
                                     <span class="text-pixl-light/50 text-sm">Save</span>
@@ -271,140 +298,144 @@
                         </div>
                         <!--Meta right action end-->
                     </div>
-            <!--Thread replies start-->
-                <ol class="">
-                    <li class="flex gap-2 pt-4 relative group/li">
-                        <div class="absolute w-px h-full bg-pixl-light/10 left-5 top-0 group-last/li:h-4"></div>
-                        <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
-                        <div class="border-t border-pixl-light/10 grow">
-                            <!--Thread meta user data start-->
-                            <div class="flex gap-2 items-center">
-                                <div class="mt-4 grow text-pixl-light/50 pb-4">
-                                    <div class="flex gap-2 justify-between">
-                                        <div class="flex gap-2">
-                                            <p class="hover:underline">Alex</p>
-                                            <p class="text-sm text-pixl-light/50 hover:text-pixl-light">2h @add-alex</p>
+                    <!--Thread replies start-->
+                    <ol class="">
+                        <li class="flex gap-2 pt-4 relative group/li">
+                            <div class="absolute w-px h-full bg-pixl-light/10 left-5 top-0 group-last/li:h-4"></div>
+                            <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
+                            <div class="border-t border-pixl-light/10 grow">
+                                <!--Thread meta user data start-->
+                                <div class="flex gap-2 items-center">
+                                    <div class="mt-4 grow text-pixl-light/50 pb-4">
+                                        <div class="flex gap-2 justify-between">
+                                            <div class="flex gap-2">
+                                                <p class="hover:underline">Alex</p>
+                                                <p class="text-sm text-pixl-light/50 hover:text-pixl-light">2h
+                                                    @add-alex</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--Thread meta user data end-->
+                                <!--Thread meta user data end-->
 
-                            <p class="mt-3">That nice!</p>
+                                <p class="mt-3">That nice!</p>
 
-                            <!--Meta action start-->
-                            <div class="flex justify-between mt-4">
-                                <div class="flex justify-between">
-                                    <div class="flex gap-6">
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                          d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
-                                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">23</span>
-                                        </div>
+                                <!--Meta action start-->
+                                <div class="flex justify-between mt-4">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-6">
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+                                                              stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">23</span>
+                                            </div>
 
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z"
-                                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">10</span>
-                                        </div>
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4"
-                                                          stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">15</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Meta action end-->
-                        </div>
-
-                    </li>
-                    <li class="flex gap-2 pt-4 relative group/li">
-                        <div class="absolute w-px h-full bg-pixl-light/10 left-5 top-0 group-last/li:h-4"></div>
-
-                        <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
-                        <div class="border-t border-pixl-light/10 grow">
-                            <!--Thread meta user data start-->
-                            <div class="flex gap-2 items-center">
-                                <div class="mt-4 grow text-pixl-light/50 pb-4">
-                                    <div class="flex gap-2 justify-between">
-                                        <div class="flex gap-2">
-                                            <p class="hover:underline">Neil</p>
-                                            <p class="text-sm text-pixl-light/50 hover:text-pixl-light">5h @add-neil</p>
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z"
+                                                              stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">10</span>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4"
+                                                              stroke="#464455" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">15</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--Meta action end-->
                             </div>
-                            <!--Thread meta user data end-->
 
-                            <p class="mt-3">Good!</p>
+                        </li>
+                        <li class="flex gap-2 pt-4 relative group/li">
+                            <div class="absolute w-px h-full bg-pixl-light/10 left-5 top-0 group-last/li:h-4"></div>
 
-                            <!--Meta action start-->
-                            <div class="flex justify-between mt-4">
-                                <div class="flex justify-between">
-                                    <div class="flex gap-6">
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                          d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
-                                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">23</span>
-                                        </div>
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z"
-                                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">10</span>
-                                        </div>
-                                        <div class="flex gap-2">
-                                            <button class="hover:text-pixl">
-                                                <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4"
-                                                          stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </button>
-                                            <span class="text-sm">15</span>
+                            <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
+                            <div class="border-t border-pixl-light/10 grow">
+                                <!--Thread meta user data start-->
+                                <div class="flex gap-2 items-center">
+                                    <div class="mt-4 grow text-pixl-light/50 pb-4">
+                                        <div class="flex gap-2 justify-between">
+                                            <div class="flex gap-2">
+                                                <p class="hover:underline">Neil</p>
+                                                <p class="text-sm text-pixl-light/50 hover:text-pixl-light">5h
+                                                    @add-neil</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--Thread meta user data end-->
+
+                                <p class="mt-3">Good!</p>
+
+                                <!--Meta action start-->
+                                <div class="flex justify-between mt-4">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-6">
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+                                                              stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">23</span>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 9H17M10 13H17M7 9H7.01M7 13H7.01M21 20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20Z"
+                                                              stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">10</span>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <button class="hover:text-pixl">
+                                                    <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M14.3935 5.37371C18.0253 6.70569 19.8979 10.7522 18.5761 14.4118C17.6363 17.0135 15.335 18.7193 12.778 19.0094M12.778 19.0094L13.8253 17.2553M12.778 19.0094L14.4889 20M9.60651 18.6263C5.97465 17.2943 4.10205 13.2478 5.42394 9.58823C6.36371 6.98651 8.66504 5.28075 11.222 4.99059M11.222 4.99059L10.1747 6.74471M11.222 4.99059L9.51114 4"
+                                                              stroke="#464455" stroke-linecap="round"
+                                                              stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                                <span class="text-sm">15</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Meta action end-->
                             </div>
-                            <!--Meta action end-->
-                        </div>
 
 
-                    </li>
+                        </li>
 
-                </ol>
-            <!--Thread replies end-->
+                    </ol>
+                    <!--Thread replies end-->
 
                 </div>
             </div>
@@ -502,8 +533,8 @@
                         <form action="" class="mt-4 grow flex flex-col gap-2">
                             <div class="">
                                 <label for="post" class="sr-only">Post body</label>
-                            <textarea cols="30" rows="4" class="border-none w-full resize-none p-2"
-                                      placeholder="Replies to Adelee"></textarea>
+                                <textarea cols="30" rows="4" class="border-none w-full resize-none p-2"
+                                          placeholder="Replies to Adelee"></textarea>
                             </div>
 
                             <div class="flex justify-between">
@@ -515,13 +546,16 @@
                                         </svg>
                                     </button>
                                     <button>
-                                        <svg class="w-8" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg class="w-8" viewBox="0 0 24 24" fill="currentColor"
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z"
                                                   stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
                                 </div>
-                                <input type="submit" class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark" value="Post">
+                                <input type="submit"
+                                       class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark"
+                                       value="Post">
                             </div>
                         </form>
                     </div>
@@ -531,11 +565,11 @@
         </li>
     </ul>
     <!--Thread status end-->
-<footer class="mt-28">
-    <p class="text-center">That all, folks</p>
-    <hr class="border-b-pixl-light/10 my-4">
-    <div class="h-12 inset-x-0 bg-[url(/images/white-noise.gif)]"></div>
-</footer>
+    <footer class="mt-28">
+        <p class="text-center">That all, folks</p>
+        <hr class="border-b-pixl-light/10 my-4">
+        <div class="h-12 inset-x-0 bg-[url(/images/white-noise.gif)]"></div>
+    </footer>
 </main>
 <aside class="bg-pixl/50 w-80 shrink-0 p-2 overflow-y-auto xl:block hidden">
     <input type="text" placeholder="Search an idea or pixel" class="w-full focus:outline-pixl">

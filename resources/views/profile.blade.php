@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Pixl-Profile">
 
 <a href="" class="flex gap-2 group">
         <div class="text-pixl-light/40"><<</div>

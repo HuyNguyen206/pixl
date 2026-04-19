@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="color-scheme" content="dark">
-    <title>PIXL</title>
+    <title>{{$title}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="p-2 bg-pixl-dark text-pixl-light flex xl:gap-16 gap-4 px-4 h-dvh overflow-clip">

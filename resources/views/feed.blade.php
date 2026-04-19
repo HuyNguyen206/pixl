@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Pixl-Feed">
     <div class="h-full">
         <nav class="overflow-x-auto [scrollbar-width:none]">
             <ul class="flex justify-end gap-4">

@@ -7,7 +7,7 @@ back
             </span>
     </a>
 
-    <img src="/public/images/cover.png" alt="">
+    <img src="images/cover.png" alt="">
 
     <div class="-mt-20 flex flex-col gap-5 [&_a]:text-pixl [&_a]:hover:underline">
         <!--       User profile start-->

@@ -10,7 +10,7 @@
     </div>
 
     <div class="flex gap-2 mb-4">
-        <img class="size-10 object-cover" src="/images/avatar.png" alt="">
+        <img class="size-10 object-cover" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
         @include('partials.post-form', ['label' => 'Post Body', 'name' => 'post-body', 'placeHolder' => "What's on your mind?"])
     </div>
 </x-layout>

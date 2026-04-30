@@ -7,13 +7,13 @@ back
             </span>
     </a>
 
-    <img src="images/cover.png" alt="">
+    <img src="{{Vite::asset('resources/images/cover.png')}}" alt="">
 
     <div class="-mt-20 flex flex-col gap-5 [&_a]:text-pixl [&_a]:hover:underline">
         <!--       User profile start-->
         <div class="flex flex-wrap flex-row justify-between gap-2 items-end">
             <div class="flex gap-4 items-end">
-                <img class="md:size-30 lg:40 size-20 object-cover" src="/images/adelle.png" alt="">
+                <img class="md:size-30 lg:40 size-20 object-cover" src="{{Vite::asset('resources/images/adelle.png')}}" alt="">
                 <div class="flex flex-col gap-2">
                     <p>_adelle</p>
                     <p class="text-pixl-light/40">@tydsss</p>

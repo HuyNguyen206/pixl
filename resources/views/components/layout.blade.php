@@ -26,7 +26,7 @@
     <div class="flex flex-col gap-4 pb-10">
         <button class="bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark text-center">Post</button>
         <div class="flex gap-4 pb-10">
-            <img class="size-10 object-cover isolate" src="/images/avatar.png" alt="">
+            <img class="size-10 object-cover isolate" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
             <div class="flex flex-col gap-2">
                 <p>_adrian</p>
                 <p class="text-pixl-light/40">@tydsss</p>
@@ -47,7 +47,7 @@
     <footer class="mt-28">
         <p class="text-center">That all, folks</p>
         <hr class="border-b-pixl-light/10 my-4">
-        <div class="h-12 inset-x-0 bg-[url(/images/white-noise.gif)]"></div>
+        <div class="h-12 inset-x-0 bg-[url(/resources/images/white-noise.gif)]"></div>
     </footer>
 </main>
 @include('partials.aside')

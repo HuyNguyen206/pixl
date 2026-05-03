@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Post::class, 'parent_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->text('content');
+            $table->foreignIdFor(\App\Models\Post::class, 'repost_of_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->text('content')->nullable();
             $table->timestamps();
 
             $table->index(['parent_id']);

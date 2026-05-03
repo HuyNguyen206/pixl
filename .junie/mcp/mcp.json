@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/opt/lampp/bin/php-8.2.4",
+            "args": [
+                "/opt/lampp/htdocs/pixl/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

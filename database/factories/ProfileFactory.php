@@ -22,7 +22,7 @@ class ProfileFactory extends Factory
             'user_id' => fn() => User::factory(),
             'display_name' => $this->faker->name(),
             'handle' => $this->faker->unique()->userName(),
-            'bio' => $this->faker->sentences(),
+            'bio' => $this->faker->sentence(),
             'avatar_url' => $this->faker->imageUrl(200, 200),
         ];
     }

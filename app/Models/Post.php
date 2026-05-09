@@ -27,6 +27,11 @@ class Post extends Model
         return $this->belongsTo(Post::class, 'parent_id');
     }
 
+    public function parentRepost(): BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'repost_of_id');
+    }
+
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
@@ -42,6 +47,22 @@ class Post extends Model
         return static::create([
             'profile_id' => $profile->id,
             'content' => $content,
+        ]);
+    }
+
+    public static function replyToPost(Post $post, Profile $replier, string $message): static
+    {
+        return $post->replies()->create([
+            'profile_id' => $replier->id,
+            'content' => $message,
+        ]);
+    }
+
+    public static function repostOfPost(Post $post, Profile $reposter, string $message = null)
+    {
+        return $post->reposts()->create([
+            'profile_id' => $reposter->id,
+            'content' => $message,
         ]);
     }
 }

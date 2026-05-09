@@ -19,14 +19,14 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'parent_id' => fn() => Post::factory(),
-            'repost_of_id' => fn() => Post::factory(),
+            'parent_id' => null,
+            'repost_of_id' => null,
             'profile_id' => fn() => Profile::factory(),
             'content' => $this->faker->realText(200),
         ];
     }
 
-    public function reply(Post $parentPost)
+    public function replyToParent(Post $parentPost)
     {
         return $this->state(fn (array $attributes) => [
             'parent_id' => $parentPost->id,
@@ -34,7 +34,7 @@ class PostFactory extends Factory
         ]);
     }
 
-    public function repost(Post $originalPost)
+    public function repostOf(Post $originalPost)
     {
         return $this->state(fn (array $attributes) => [
             'repost_of_id' => $originalPost->id,

@@ -34,3 +34,70 @@ test('user can create a post', function () {
 
     assertCount(1, $profile->posts);
 });
+
+test('can replied a post', function () {
+    $orignial = \App\Models\Post::factory()->create(['parent_id' => null, 'repost_of_id' => null]);
+
+    $replier = \App\Models\Profile::factory()->create();
+
+    $reply = \App\Models\Post::replyToPost($orignial, $replier, 'Hello world!');
+
+    expect($reply->parentPost)->is($orignial)->toBeTrue()
+        ->and($orignial->replies)->count()->toBe(1)
+        ->and($orignial->replies)->contains($reply);
+
+});
+
+test('can have many replies a post', function () {
+    $orignial = \App\Models\Post::factory()->create(['parent_id' => null, 'repost_of_id' => null]);
+
+    $replies = \App\Models\Post::factory(4)->replyToParent($orignial)->create(
+        ['repost_of_id' => null]
+    );
+    expect($orignial->replies)->count()->toBe(4)
+         ->and($orignial->replies->pluck('id')->toArray())
+         ->toEqual($replies->pluck('id')->toArray())
+    ->and($replies->first()->parentPost)->is($orignial)->toBeTrue();
+
+});
+
+test('create plain repost', function () {
+    $orignial = \App\Models\Post::factory()->create(['parent_id' => null, 'repost_of_id' => null]);
+
+    $replier = \App\Models\Profile::factory()->create();
+
+    $repost = \App\Models\Post::repostOfPost($orignial, $replier);
+
+    expect($repost->parentRepost)->is($orignial)->toBeTrue()
+        ->and($orignial->reposts)->count()->toBe(1)
+        ->and($repost->content)->toBeNull()
+        ->and($orignial->reposts)->contains($repost);
+
+});
+
+
+test('can have many plain repost', function () {
+    $orignial = \App\Models\Post::factory()
+        ->create(['parent_id' => null, 'repost_of_id' => null]);
+
+    $reposts = \App\Models\Post::factory(2)->repostOf($orignial)->create();
+
+    expect($orignial->reposts)->count()->toBe(2)
+        ->and($orignial->reposts)->contains($reposts->first())
+        ->and($reposts->first()->parentRepost->id)->toBe($orignial->id);
+
+});
+
+test('create quote repost', function () {
+    $orignial = \App\Models\Post::factory()->create();
+
+    $replier = \App\Models\Profile::factory()->create();
+
+    $repost = \App\Models\Post::repostOfPost($orignial, $replier, $message = 'QUOTE CONTENT');
+
+    expect($repost->parentRepost)->is($orignial)->toBeTrue()
+        ->and($orignial->reposts)->count()->toBe(1)
+        ->and($orignial->reposts)->contains($repost)
+        ->and($repost->content)->toBe($message);
+
+});

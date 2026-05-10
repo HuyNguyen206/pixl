@@ -31,4 +31,9 @@ class Like extends Model
             'profile_id' => $profile->id,
         ]);
     }
+
+    public static function removeLike(Profile $profile, Post $post)
+    {
+       return $post->likeProfiles()->detach($profile);
+    }
 }

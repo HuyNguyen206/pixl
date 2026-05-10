@@ -10,13 +10,25 @@ class Follow extends Model
     /** @use HasFactory<\Database\Factories\FollowFactory> */
     use HasFactory;
 
-    public function followers()
+    public function follower()
     {
         return $this->belongsTo(Profile::class, 'follower_profile_id');
     }
 
-    public function following()
+    public function followed()
     {
-        return $this->belongsTo(Profile::class, 'following_profile_id');
+        return $this->belongsTo(Profile::class, 'followed_profile_id');
+    }
+
+    public static function createFollow(Profile $follower, Profile $followeds)
+    {
+        if ($follower->id === $followeds->id) {
+            throw new \InvalidArgumentException('A profile cannot follow itself.');
+        }
+
+        return static::firstOrCreate([
+            'followed_profile_id' => $followeds->id,
+            'follower_profile_id' => $follower->id,
+        ]);
     }
 }

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\Profile::class, 'followed_profile_id')->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Profile::class, 'follower_profile_id')->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\Profile::class, 'following_profile_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
-            $table->unique(['follower_profile_id', 'following_profile_id']);
+            $table->unique(['followed_profile_id', 'follower_profile_id']);
+            $table->index(['followed_profile_id']);
             $table->index(['follower_profile_id']);
-            $table->index(['following_profile_id']);
         });
     }
 

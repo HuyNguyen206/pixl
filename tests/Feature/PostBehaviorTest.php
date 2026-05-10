@@ -101,3 +101,32 @@ test('create quote repost', function () {
         ->and($repost->content)->toBe($message);
 
 });
+
+test('prevent duplicate reposts', function () {
+    $orignial = \App\Models\Post::factory()->create();
+
+    $replier = \App\Models\Profile::factory()->create();
+
+    $repost = \App\Models\Post::repostOfPost($orignial, $replier, $message = 'QUOTE CONTENT');
+    $repost2 = \App\Models\Post::repostOfPost($orignial, $replier, $message = 'QUOTE CONTENT');
+
+    $repost3 = \App\Models\Post::repostOfPost($orignial, \App\Models\Profile::factory()->create(), $message = 'QUOTE CONTENT');
+
+    expect($repost->id)->toBe($repost2->id);
+
+    assertCount(1, $orignial->reposts()->where('profile_id', $replier->id)->get());
+});
+
+test('remove a repost', function () {
+    $orignial = \App\Models\Post::factory()->create();
+
+   $profile = \App\Models\Post::factory()->repostOf($orignial)->create()->profile;
+
+  $success = \App\Models\Post::removeRepostOfPost($orignial, $profile);
+
+    expect($orignial->reposts)->toHaveCount(0)
+    ->and($success);
+
+});
+
+

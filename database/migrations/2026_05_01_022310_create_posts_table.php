@@ -21,6 +21,7 @@ return new class extends Migration
 
             $table->index(['parent_id']);
             $table->index(['profile_id', 'created_at']);
+            $table->unique(['profile_id', 'repost_of_id']);
         });
     }
 

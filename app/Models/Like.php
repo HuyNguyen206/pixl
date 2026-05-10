@@ -13,11 +13,22 @@ class Like extends Model
 
     public function profile(): BelongsTo
     {
-        $this->belongsTo(Profile::class);
+       return $this->belongsTo(Profile::class);
     }
 
     public function post(): BelongsTo
     {
-        $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class);
+    }
+
+    public static function createLike(Profile $profile, Post $post)
+    {
+//        $post->likeProfiles()->attach($profile);
+//        return $post->likes()->latest('id')->first();
+
+        return static::firstOrCreate([
+            'post_id' => $post->id,
+            'profile_id' => $profile->id,
+        ]);
     }
 }

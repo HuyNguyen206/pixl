@@ -7,16 +7,16 @@ back
             </span>
     </a>
 
-    <img src="{{Vite::asset('resources/images/cover.png')}}" alt="">
+    <img src="{{$profile->cover_url}}" alt="">
 
     <div class="-mt-20 flex flex-col gap-5 [&_a]:text-pixl [&_a]:hover:underline">
         <!--       User profile start-->
         <div class="flex flex-wrap flex-row justify-between gap-2 items-end">
             <div class="flex gap-4 items-end">
-                <img class="md:size-30 lg:40 size-20 object-cover" src="{{Vite::asset('resources/images/adelle.png')}}" alt="">
+                <img class="md:size-30 lg:40 size-20 object-cover" src="{{$profile->avatar_url}}" alt="">
                 <div class="flex flex-col gap-2">
                     <p>_adelle</p>
-                    <p class="text-pixl-light/40">@tydsss</p>
+                    <p class="text-pixl-light/40">@ {{$profile->handle}}</p>
                 </div>
             </div>
             <a href="#" class="bg-pixl-light/10 border border-transparent px-4 py-0.5">Edit profile</a>
@@ -26,11 +26,11 @@ back
         <p>I design <a href="#">@Laracasts</a> so hit me up whenever =]</p>
         <div class="flex gap-6 text-sm">
             <div class="flex gap-2">
-                <p>100</p>
+                <p>{{$profile->followings_count}}</p>
                 <p class="text-pixl-light/40">Following</p>
             </div>
             <div class="flex gap-2">
-                <p>2190</p>
+                <p>{{$profile->followers_count}}</p>
                 <p class="text-pixl-light/40">Followers</p>
             </div>
         </div>

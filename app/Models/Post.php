@@ -45,7 +45,7 @@ class Post extends Model
 
     public function likeProfiles(): BelongsToMany
     {
-        return $this->belongsToMany(Profile::class, 'likes', 'profile_id', 'post_id');
+        return $this->belongsToMany(Profile::class, 'likes', 'post_id', 'profile_id')->withTimestamps();
     }
 
     public static function publish(Profile $profile, string $content)

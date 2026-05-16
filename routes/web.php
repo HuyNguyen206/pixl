@@ -6,6 +6,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/{profile:handle}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profiles.show');
+
 Route::get('/feed', function () {
     return view('feed');
 });

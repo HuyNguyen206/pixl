@@ -31,4 +31,9 @@ class Follow extends Model
             'follower_profile_id' => $follower->id,
         ]);
     }
+
+    public static function unFollow(Profile $follower, Profile $followeds)
+    {
+        $follower->followings()->detach($followeds->id);
+    }
 }

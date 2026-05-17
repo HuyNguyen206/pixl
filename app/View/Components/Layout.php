@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class Layout extends Component
@@ -11,7 +12,7 @@ class Layout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $title = 'Laravel')
+    public function __construct(public string $title = 'Laravel', public Collection $posts = new Collection())
     {
         //
     }

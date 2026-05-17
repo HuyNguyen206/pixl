@@ -13,7 +13,11 @@ class ProfileController extends Controller
 
         $posts = $profile->posts()
             ->whereNull('parent_id')
-            ->with(['parentRepost' =>  fn($query) => $query->withCount(['likes', 'replies', 'reposts'])])
+            ->with([
+                    'parentRepost' =>  fn($query) => $query->withCount(['likes', 'replies', 'reposts']),
+                    'parentRepost.profile',
+                    'profile'
+                ])
             ->withCount(['likes', 'replies', 'reposts'])
             ->latest()
             ->get();

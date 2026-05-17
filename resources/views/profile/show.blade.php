@@ -1,4 +1,4 @@
-<x-layout title="Pixl-Profile">
+<x-layout title="Pixl-Profile" :posts="$posts">
 
 <a href="" class="flex gap-2 group">
         <div class="text-pixl-light/40"><<</div>
@@ -15,15 +15,15 @@ back
             <div class="flex gap-4 items-end">
                 <img class="md:size-30 lg:40 size-20 object-cover" src="{{$profile->avatar_url}}" alt="">
                 <div class="flex flex-col gap-2">
-                    <p>_adelle</p>
-                    <p class="text-pixl-light/40">@ {{$profile->handle}}</p>
+                    <p>{{$profile->display_name}}</p>
+                    <a href="{{route('profiles.show', $profile)}}" class="text-pixl-light/40">{{"@$profile->handle"}}</a>
                 </div>
             </div>
             <a href="#" class="bg-pixl-light/10 border border-transparent px-4 py-0.5">Edit profile</a>
         </div>
         <!--       User profile end-->
 
-        <p>I design <a href="#">@Laracasts</a> so hit me up whenever =]</p>
+        <p>{{$profile->bio}}</p>
         <div class="flex gap-6 text-sm">
             <div class="flex gap-2">
                 <p>{{$profile->followings_count}}</p>
@@ -54,6 +54,11 @@ back
             </li>
         </ul>
         <!-- Navigation end tab-->
-
+            <ul class="flex flex-col gap-2">
+                @forelse($posts as $post)
+                    @include('partials.profile.post', compact('profile'))
+                @empty
+                @endforelse
+            </ul>
     </div>
 </x-layout>

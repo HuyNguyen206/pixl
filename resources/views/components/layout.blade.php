@@ -43,7 +43,12 @@
 </header>
 <main class="flex flex-col gap-4 overflow-y-auto grow px-4">
     {{$slot}}
-    @include('partials.thread')
+{{--    <ul class="flex flex-col gap-2">--}}
+{{--        @forelse($posts as $post)--}}
+{{--            @include('partials.item-feed')--}}
+{{--        @empty--}}
+{{--        @endforelse--}}
+{{--    </ul>--}}
     <footer class="mt-28">
         <p class="text-center">That all, folks</p>
         <hr class="border-b-pixl-light/10 my-4">

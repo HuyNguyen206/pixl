@@ -1,11 +1,11 @@
 <li class="border-t border-t-pixl-light/10 pt-4">
     <div class="flex gap-2">
-        <img class="size-10 object-cover" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
+        <img class="size-10 object-cover" src="{{$post->profile->avatar_url}}" alt="">
         <div class="mt-4 grow text-pixl-light/50 pb-4">
             <div class="flex gap-2 justify-between">
                 <div class="flex gap-2">
-                    <p class="hover:underline">Micheal</p>
-                    <p class="text-sm text-pixl-light/50 hover:text-pixl-light">3h @add-micheal</p>
+                    <p class="hover:underline">{{$post->profile->display_name}}</p>
+                    <p class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</p>
                 </div>
                 <button class="flex gap-1 py-2 group">
                     <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
@@ -15,9 +15,14 @@
                 </button>
             </div>
             <p class="mt-3 [&_a]:text-pixl [&_a]:hover:underline">
-                I made this! <a href="#"><span>#my-art</span></a> <a href="#"><span>#pixel</span></a>
+               {{$post->content}}
+                @if($post->parentRepost)
+                    <ul>
+                      @include('partials.item-feed', ['post' => $post->parentRepost])
+                    </ul>
+                @endif
+
             </p>
-            <img src="{{Vite::asset('resources/images/Faster.png')}}" alt="">
             <div class="flex justify-between mt-4 pb-4">
                 <!--Meta left action start-->
                 <div class="flex justify-between">
@@ -32,7 +37,7 @@
                                           stroke-linejoin="round"/>
                                 </svg>
                             </button>
-                            <span class="text-sm">23</span>
+                            <span class="text-sm">{{$post->likes_count}}</span>
                         </div>
 
                         <div class="flex gap-2">
@@ -45,7 +50,7 @@
                                         stroke-linejoin="round"/>
                                 </svg>
                             </button>
-                            <span class="text-sm">10</span>
+                            <span class="text-sm">{{$post->replies_count}}</span>
                         </div>
                         <div class="flex gap-2">
                             <button class="hover:text-pixl">
@@ -56,7 +61,7 @@
                                         stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
-                            <span class="text-sm">15</span>
+                            <span class="text-sm">{{$post->reposts_count}}</span>
                         </div>
                     </div>
                 </div>
@@ -94,7 +99,10 @@
             </div>
             <!--Thread replies start-->
             <ol class="">
-                @include('partials.feed-item-reply')
+                @forelse($post->replies as $reply)
+                    @include('partials.feed-item-reply')
+                @empty
+                @endforelse
             </ol>
             <!--Thread replies end-->
 

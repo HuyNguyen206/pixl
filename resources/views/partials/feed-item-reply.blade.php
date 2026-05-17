@@ -1,21 +1,21 @@
 <li class="flex gap-2 pt-4 relative group/li">
     <div class="absolute w-px h-full bg-pixl-light/10 left-5 top-0 group-last/li:h-4"></div>
-    <img class="size-10 object-cover isolate" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
+    <img class="size-10 object-cover isolate" src="{{$reply->profile->avatar_url}}" alt="">
     <div class="border-t border-pixl-light/10 grow">
         <!--Thread meta user data start-->
         <div class="flex gap-2 items-center">
             <div class="mt-4 grow text-pixl-light/50 pb-4">
                 <div class="flex gap-2 justify-between">
                     <div class="flex gap-2">
-                        <p class="hover:underline">Alex</p>
-                        <p class="text-sm text-pixl-light/50 hover:text-pixl-light">2h @add-alex</p>
+                        <p class="hover:underline">{{$reply->profile->display_name}}</p>
+                        <p class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$reply->created_at->diffForHumans()}} {{"@{$reply->profile->handle}"}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <!--Thread meta user data end-->
 
-        <p class="mt-3">That nice!</p>
+        <p class="mt-3">{{$reply->content}}</p>
 
         <!--Meta action start-->
         <div class="flex justify-between mt-4">
@@ -31,7 +31,7 @@
                                       stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <span class="text-sm">23</span>
+                        <span class="text-sm">{{$reply->likes_count}}</span>
                     </div>
 
                     <div class="flex gap-2">
@@ -43,7 +43,7 @@
                                       stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <span class="text-sm">10</span>
+                        <span class="text-sm">{{$reply->replies_count}}</span>
                     </div>
                     <div class="flex gap-2">
                         <button class="hover:text-pixl">
@@ -53,7 +53,7 @@
                                       stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </button>
-                        <span class="text-sm">15</span>
+                        <span class="text-sm">{{$reply->reposts_count}}</span>
                     </div>
                 </div>
             </div>

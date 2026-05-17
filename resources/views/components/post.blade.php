@@ -19,7 +19,10 @@
             @if($post->parentRepost)
                 <blockquote class="p-4 my-4 border-s-4 border-default bg-neutral-secondary-soft">
                     <p class="text-xl italic font-medium leading-relaxed text-heading">
-                     @include('partials.profile.post', ['post' => $post->parentRepost])
+                    <x-post
+                        :post="$post->parentRepost"
+                        :show-engagement="false"
+                        />
                     <p/>
                 </blockquote>
                 @endif
@@ -99,6 +102,17 @@
                     </div>
                     <!--Meta right action end-->
                 </div>
+            @if($showReplies)
+                    <ol class="">
+                        @forelse($post->replies as $reply)
+                            <x-reply
+                                :reply="$reply"
+                            @include('partials.feed-item-reply')
+                        @empty
+                        @endforelse
+                    </ol>
+            @endif
+
         </div>
     </div>
 </li>

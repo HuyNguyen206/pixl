@@ -59,8 +59,9 @@ back
                     <x-post
                         :post="$post"
                         :show-engagement="true"
-                        :show-replies="false"
+                        :show-replies="true"
                     />
+{{--                    @include('partials.profile.post', compact('profile'))--}}
                 @empty
                 @endforelse
             </ul>

@@ -7,6 +7,7 @@ Route::get('/', function () {
 });
 
 Route::get('/{profile:handle}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profiles.show');
+Route::get('/{profile:handle}/replies', [\App\Http\Controllers\ProfileController::class, 'replies'])->name('profiles.replies');
 
 Route::get('/feed', function () {
     return view('feed');

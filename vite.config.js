@@ -7,13 +7,25 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             assets: ['resources/images/**', 'resources/fonts/**'],
-            refresh: true,
+            refresh: [
+                'resources/views/**',
+                'routes/**',
+                'resources/lang/**',
+            ],
         }),
         tailwindcss(),
     ],
     server: {
         watch: {
-            ignored: ['**/storage/framework/views/**'],
+            ignored: [
+                '**/storage/**',
+                '**/vendor/**',
+                '**/node_modules/**',
+                '**/.git/**',
+                '**/.env*',
+                '**/logs/**',
+                '**/bootstrap/cache/**',
+            ],
         },
     },
 });

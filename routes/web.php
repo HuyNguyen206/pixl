@@ -8,14 +8,10 @@ Route::get('/', function () {
 
 Route::get('/{profile:handle}', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profiles.show');
 Route::get('/{profile:handle}/replies', [\App\Http\Controllers\ProfileController::class, 'replies'])->name('profiles.replies');
-
-Route::get('/feed', function () {
-    return view('feed');
+Route::scopeBindings()->group(function () {
+    Route::get('/{profile:handle}/status/{post}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.show');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
 
 Route::middleware('auth')->group(function () {
     Route::post('posts', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');

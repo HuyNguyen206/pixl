@@ -8,7 +8,7 @@
                 <div class="flex gap-2 justify-between">
                     <div class="flex gap-2">
                         <a href="{{route('profiles.show', $reply->profile)}}" class="hover:underline !text-pixl-light/50">{{$reply->profile->display_name}}</a>
-                        <p class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$reply->created_at->diffForHumans()}} {{"@{$reply->profile->handle}"}}</p>
+                        <a href="{{route('posts.show', [$reply->profile, $reply])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$reply->created_at->diffForHumans()}} {{"@{$reply->profile->handle}"}}</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,20 @@
             </div>
             <!--Meta action end-->
         @endif
+        @if($showReplies)
+            <ol class="">
+                @forelse($reply->replies as $reply)
+                    <x-reply
+                        :reply="$reply"
+                        :show-engagement="$showEngagement"
+                        :show-replies="$showReplies"
 
+                    />
+                    {{--                            @include('partials.feed-item-reply')--}}
+                @empty
+                @endforelse
+            </ol>
+        @endif
     </div>
 
 </li>

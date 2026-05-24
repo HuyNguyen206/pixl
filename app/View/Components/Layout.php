@@ -12,7 +12,7 @@ class Layout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $title = 'Laravel', public Collection $posts = new Collection())
+    public function __construct(public string $title = 'Laravel')
     {
         //
     }

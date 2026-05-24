@@ -5,7 +5,7 @@
             <div class="flex gap-2 justify-between">
                 <div class="flex gap-2">
                     <a href="{{route('profiles.show', $post->profile)}}" class="hover:underline !text-pixl-light/50">{{$post->profile->display_name}}</a>
-                    <p class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</p>
+                    <a href="{{route('posts.show', [$post->profile, $post])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</a>
                 </div>
                 <button class="flex gap-1 py-2 group">
                     <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
@@ -111,6 +111,7 @@
                             <x-reply
                                 :reply="$reply"
                                 :show-engagement="$showEngagement"
+                                :show-replies="$showReplies"
 
                             />
 {{--                            @include('partials.feed-item-reply')--}}

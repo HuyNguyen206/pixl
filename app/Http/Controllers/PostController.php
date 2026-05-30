@@ -2,14 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Follow;
 use App\Models\Post;
 use App\Models\Profile;
+use App\Queries\TimelineQuery;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $profile = auth()->user()->profile;
+        $posts = Post::take(4)->get();
+//        $posts = Post::where('profile_id', $profile->id)
+//            ->orWhereIn('profile_id', function ($query) {
+//                Follow::where('followed_profile_id', auth()->user()->profile->id)
+//                    ->select('follower_profile_id');
+////                $profile->followings()->pluck('profiles.id')
+//            })->withCount(['likes', 'replies', 'reposts'])->latest()->get();
+
+        $posts = TimelineQuery::forViewer($profile)->get();
+
+        return view('posts.index', compact('posts'));
+    }
+
     public function show(Profile $profile, Post $post)
     {
         $post->load([
@@ -27,6 +45,7 @@ class PostController extends Controller
 
         return view('posts.show', compact('post'));
     }
+
     public function store(Request $request)
     {
 //        dd(123);

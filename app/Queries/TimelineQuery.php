@@ -19,8 +19,11 @@ class TimelineQuery
         return new static($profile);
     }
 
-    public function get() {
-        return $this->baseQuery()->get();
+    public function get()
+    {
+        $result = $this->baseQuery()->get();
+//        dd($result);
+        return $result;
     }
 
     public function paginate(int $perPage = 20): LengthAwarePaginator
@@ -30,15 +33,39 @@ class TimelineQuery
 
     private function baseQuery(): Builder
     {
-        return Post::where('profile_id', $this->profile->id)
-            ->orWhereIn('profile_id', function ($query) {
-                $query->select('follower_profile_id')->from((new Follow)->getTable())
-                    ->where('followed_profile_id', auth()->user()->profile->id);
-            })->whereNull('parent_id')
+        return Post::where(function ($query) {
+            $query->where('profile_id', $this->profile->id);
+            $query->orWhereIn('profile_id', function ($query) {
+                    $query->select('follower_profile_id')->from((new Follow)->getTable())
+                        ->where('followed_profile_id', $this->profile->id);
+                });
+        })
+            ->whereNull('parent_id')
             ->with([
                 'profile',
-                'reposts' => fn($query) => $query->withCount(['likes', 'replies', 'reposts'])->with('profile'),
+                'reposts' => fn($query) => $query
+                    ->withCount([
+                        'likes',
+                        'replies',
+                        'reposts'
+                    ])
+                    ->withExists([
+                        'likeProfiles as is_like' => fn($query) => $query->where('profiles.id', $this->profile->id),
+                        'replies as is_reply' => fn($query) => $query->where('profile_id', $this->profile->id),
+                        'reposts as is_repost' => fn($query) => $query->where('profile_id', $this->profile->id),
+                    ])
+                    ->with('profile'),
             ])
-            ->withCount(['likes', 'replies', 'reposts'])->latest();
+            ->withCount([
+                'likes',
+                'replies',
+                'reposts',
+            ])
+            ->withExists([
+                'likeProfiles as is_like' => fn($query) => $query->where('profiles.id', $this->profile->id),
+                'replies as is_reply' => fn($query) => $query->where('profile_id', $this->profile->id),
+                'reposts as is_repost' => fn($query) => $query->where('profile_id', $this->profile->id),
+            ])
+            ->latest();
     }
 }

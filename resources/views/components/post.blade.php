@@ -35,7 +35,7 @@
                         <div class="flex justify-between">
                             <div class="flex gap-6">
                                 <div class="flex gap-2">
-                                    <button class="hover:text-pixl">
+                                    <button class="hover:text-pixl @if($post->is_like) text-pixl @endif">
                                         <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -47,7 +47,7 @@
                                     <span class="text-sm">{{$post->likes_count}}</span>
                                 </div>
                                 <div class="flex gap-2">
-                                    <button class="hover:text-pixl">
+                                    <button class="hover:text-pixl @if($post->is_reply) text-pixl @endif">
                                         <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -59,7 +59,7 @@
                                     <span class="text-sm">{{$post->replies_count}}</span>
                                 </div>
                                 <div class="flex gap-2">
-                                    <button class="hover:text-pixl">
+                                    <button class="hover:text-pixl @if($post->is_repost) text-pixl @endif">
                                         <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path

@@ -9,9 +9,13 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('home', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::post('posts', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
+    Route::post('{profile:handle}/follows/toggle', [\App\Http\Controllers\ProfileController::class, 'followToggle'])->name('posts.follow-toggle');
 
     Route::scopeBindings()->group(function () {
         Route::post('{profile:handle}/{post}/replies', [\App\Http\Controllers\PostController::class, 'storeReply'])->name('replies.store');
+        Route::post('{profile:handle}/{post}/reposts', [\App\Http\Controllers\PostController::class, 'storeRepost'])->name('posts.repost');
+        Route::post('{profile:handle}/{post}/quotes', [\App\Http\Controllers\PostController::class, 'storeQuote'])->name('posts.quote');
+        Route::post('{profile:handle}/{post}/likes/toggle', [\App\Http\Controllers\PostController::class, 'likeToggle'])->name('posts.like-toggle');
     });
 });
 

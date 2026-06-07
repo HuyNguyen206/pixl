@@ -73,4 +73,34 @@ class PostController extends Controller
 
         return redirect()->route('posts.index');
     }
+
+    public function storeRepost(Profile $profile, Post $post)
+    {
+        $post->reposts()->create([
+            'profile_id' => $profile->id,
+        ]);
+
+        return redirect()->route('posts.index');
+    }
+
+    public function storeQuote(Profile $profile, Post $post, Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string|max:1000'
+        ]);
+
+        $post->reposts()->create([
+            'profile_id' => $profile->id,
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('posts.index');
+    }
+
+    public function likeToggle(Profile $profile, Post $post)
+    {
+        $post->likeProfiles()->toggle($profile);
+
+        return redirect()->route('posts.index');
+    }
 }

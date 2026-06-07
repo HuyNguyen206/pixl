@@ -53,4 +53,11 @@ class ProfileController extends Controller
 
         return view('profile.replies', compact('profile', 'posts'));
     }
+
+    public function followToggle(Profile $profile)
+    {
+        $profile->followers()->toggle(auth()->user()->profile);
+
+        return redirect()->back();
+    }
 }

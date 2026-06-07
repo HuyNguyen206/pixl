@@ -105,6 +105,8 @@
                     <!--Meta right action end-->
                 </div>
             @endif
+{{--            @dd($post)--}}
+            <x-reply-form :post="$post"></x-reply-form>
             @if($showReplies)
                     <ol class="">
                         @forelse($post->replies as $reply)

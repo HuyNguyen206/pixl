@@ -9,8 +9,22 @@
         </nav>
     </div>
     <div class="flex gap-2 mb-4">
-        <img class="size-10 object-cover" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
-        @include('partials.post-form', ['label' => 'Post Body', 'name' => 'post-body', 'placeHolder' => "What's on your mind?"])
+        <img class="size-10 object-cover"
+             src="{{$profile->avatar_url}}"
+             alt="">
+       <x-post-form
+        :label="'Post Body'"
+        :name="'content'"
+        :placeHolder="'What\'s on ' . $profile->handle . '?'"
+        :action="route('posts.store')"
+       >
+
+
+       </x-post-form>
+{{--        @include('partials.post-form', [--}}
+{{--    'label' => 'Post Body',--}}
+{{--     'name' => 'post-body',--}}
+{{--      'placeHolder' => "What's on your mind?"])--}}
     </div>
     <!--Thread replies start-->
     <ol class="">

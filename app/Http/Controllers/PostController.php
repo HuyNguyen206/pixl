@@ -25,7 +25,7 @@ class PostController extends Controller
 
         $posts = TimelineQuery::forViewer($profile)->get();
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'profile'));
     }
 
     public function show(Profile $profile, Post $post)
@@ -49,10 +49,28 @@ class PostController extends Controller
     public function store(Request $request)
     {
 //        dd(123);
+        $request->validate([
+            'content' => 'nullable|string|max:1000'
+        ]);
+
         $request->user()->profile->posts()->create([
             'content' => $request->input('content'),
         ]);
 
-        return redirect()->back();
+        return redirect()->route('posts.index');
+    }
+
+    public function storeReply(Profile $profile, Post $post, Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string|max:1000'
+        ]);
+
+        $post->replies()->create([
+            'profile_id' => $profile->id,
+            'content' => $request->input('content'),
+        ]);
+
+        return redirect()->route('posts.index');
     }
 }

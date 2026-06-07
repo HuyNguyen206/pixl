@@ -9,6 +9,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('home', [\App\Http\Controllers\PostController::class, 'index'])->name('posts.index');
     Route::post('posts', [\App\Http\Controllers\PostController::class, 'store'])->name('posts.store');
+
+    Route::scopeBindings()->group(function () {
+        Route::post('{profile:handle}/{post}/replies', [\App\Http\Controllers\PostController::class, 'storeReply'])->name('replies.store');
+    });
 });
 
 Route::get('feed', function () {

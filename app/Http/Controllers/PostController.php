@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Follow;
 use App\Models\Post;
 use App\Models\Profile;
+use App\Queries\PostThreadQuery;
 use App\Queries\TimelineQuery;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder;
@@ -30,18 +31,7 @@ class PostController extends Controller
 
     public function show(Profile $profile, Post $post)
     {
-        $post->load([
-            'replies' => fn(HasMany $q) => $q
-                ->withCount(['likes', 'replies', 'reposts'])
-                ->with([
-                    'profile',
-                    'replies' => fn(HasMany $q) => $q
-                        ->withCount(['likes', 'replies', 'reposts'])
-                        ->with('profile')
-                        ->oldest()
-                ])
-                ->oldest()
-        ])->loadCount(['likes', 'replies', 'reposts']);
+        PostThreadQuery::getFor($post, \Auth::user()?->profile);
 
         return view('posts.show', compact('post'));
     }

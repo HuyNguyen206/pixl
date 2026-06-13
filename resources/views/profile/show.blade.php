@@ -1,4 +1,4 @@
-<x-layout title="Pixl-Profile" :posts="$posts">
+<x-layout.layout title="Pixl-Profile" :posts="$posts">
 
 <a href="" class="flex gap-2 group">
         <div class="text-pixl-light/40"><<</div>
@@ -23,4 +23,4 @@ back
             @endforelse
         </ul>
     </div>
-</x-layout>
+</x-layout.layout>

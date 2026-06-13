@@ -1,4 +1,4 @@
-<x-layout title="Pixl-Profile">
+<x-layout.layout title="Pixl-Profile">
 
     <a href="" class="flex gap-2 group">
         <div class="text-pixl-light/40"><<</div>
@@ -16,4 +16,4 @@ back
           <x-post :post="$post" :show-replies="true" :show-engagement="true"/>
         </ul>
     </div>
-</x-layout>
+</x-layout.layout>

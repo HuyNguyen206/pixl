@@ -1,4 +1,4 @@
-<x-layout title="Pixl-Profile">
+<x-layout.layout title="Pixl-Profile">
 
 <a href="" class="flex gap-2 group">
         <div class="text-pixl-light/40"><<</div>
@@ -24,4 +24,4 @@ back
                 @endforelse
             </ul>
     </div>
-</x-layout>
+</x-layout.layout>

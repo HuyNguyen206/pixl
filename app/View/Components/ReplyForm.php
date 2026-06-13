@@ -12,9 +12,9 @@ class ReplyForm extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public Profile $profile, public \App\Models\Post $post)
+    public function __construct(public ?Profile $profile, public \App\Models\Post $post)
     {
-        $this->profile = \Auth::user()->profile;
+        $this->profile = \Auth::user()?->profile;
     }
 
     /**

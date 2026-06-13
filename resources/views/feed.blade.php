@@ -1,4 +1,4 @@
-<x-layout title="Pixl-Feed">
+<x-layout.layout title="Pixl-Feed">
     <div class="h-full">
         <nav class="overflow-x-auto [scrollbar-width:none]">
             <ul class="flex justify-end gap-4">
@@ -11,6 +11,11 @@
 
     <div class="flex gap-2 mb-4">
         <img class="size-10 object-cover" src="{{Vite::asset('resources/images/avatar.png')}}" alt="">
-        @include('partials.post-form', ['label' => 'Post Body', 'name' => 'post-body', 'placeHolder' => "What's on your mind?"])
+        <x-post-form
+            :label="'Post Body'"
+            :name="'post-body'"
+            placeHolder="What's on your mind?"
+            :action="route('posts.store')"
+        ></x-post-form>
     </div>
-</x-layout>
+</x-layout.layout>

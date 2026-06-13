@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
         Route::post('{profile:handle}/{post}/replies', [\App\Http\Controllers\PostController::class, 'storeReply'])->name('replies.store');
         Route::post('{profile:handle}/{post}/reposts', [\App\Http\Controllers\PostController::class, 'storeRepost'])->name('posts.repost');
         Route::post('{profile:handle}/{post}/quotes', [\App\Http\Controllers\PostController::class, 'storeQuote'])->name('posts.quote');
+        Route::delete('{profile:handle}/{post}/quotes', [\App\Http\Controllers\PostController::class, 'destroyQuote'])->name('posts.quote.delete');
         Route::post('{profile:handle}/{post}/likes/toggle', [\App\Http\Controllers\PostController::class, 'likeToggle'])->name('posts.like-toggle');
     });
 });

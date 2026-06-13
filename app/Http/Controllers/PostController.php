@@ -103,4 +103,25 @@ class PostController extends Controller
 
         return redirect()->route('posts.index');
     }
+
+    public function destroyQuote(Profile $profile, Post $post)
+    {
+        $currentProfile = auth()->user()->profile;
+
+        if ($profile->id === $currentProfile->id) {
+            $post->delete();
+
+            return redirect()->back();
+        }
+
+        $repost = $post->reposts()->where('profile_id', $currentProfile->id)->first();
+
+        if ($repost) {
+            $repost->delete();
+
+            return redirect()->back();
+        }
+
+        return redirect()->back();
+    }
 }

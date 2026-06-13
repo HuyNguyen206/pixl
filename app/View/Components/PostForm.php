@@ -9,6 +9,14 @@ use Illuminate\View\Component;
 
 class PostForm extends Component
 {
+    public function __construct(
+        public string $label,
+        public string $name,
+        public string $placeHolder,
+        public string $action,
+    )
+    {
+    }
 
     /**
      * Get the view / contents that represent the component.

@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\Profile;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -14,9 +13,7 @@ class PostForm extends Component
         public string $name,
         public string $placeHolder,
         public string $action,
-    )
-    {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\FollowFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Follow extends Model
 {
-    /** @use HasFactory<\Database\Factories\FollowFactory> */
+    /** @use HasFactory<FollowFactory> */
     use HasFactory;
 
     public function follower()

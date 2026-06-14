@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Profile;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('follows', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Profile::class, 'followed_profile_id')->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\Profile::class, 'follower_profile_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Profile::class, 'followed_profile_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Profile::class, 'follower_profile_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->unique(['followed_profile_id', 'follower_profile_id']);
             $table->index(['followed_profile_id']);

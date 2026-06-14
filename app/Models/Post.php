@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
+    /** @use HasFactory<PostFactory> */
     use HasFactory;
 
     public function profile(): BelongsTo
@@ -64,7 +65,7 @@ class Post extends Model
         ]);
     }
 
-    public static function repostOfPost(Post $post, Profile $reposter, string $message = null)
+    public static function repostOfPost(Post $post, Profile $reposter, ?string $message = null)
     {
         return $post->reposts()->firstOrCreate([
             'profile_id' => $reposter->id,

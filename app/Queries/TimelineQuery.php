@@ -10,9 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class TimelineQuery
 {
-    public function __construct(private Profile $profile)
-    {
-    }
+    public function __construct(private readonly Profile $profile) {}
 
     public static function forViewer(Profile $profile): static
     {
@@ -22,7 +20,8 @@ class TimelineQuery
     public function get()
     {
         $result = $this->baseQuery()->get();
-//        dd($result);
+
+        //        dd($result);
         return $result;
     }
 
@@ -36,23 +35,23 @@ class TimelineQuery
         return Post::where(function ($query) {
             $query->where('profile_id', $this->profile->id);
             $query->orWhereIn('profile_id', function ($query) {
-                    $query->select('follower_profile_id')->from((new Follow)->getTable())
-                        ->where('followed_profile_id', $this->profile->id);
-                });
+                $query->select('follower_profile_id')->from((new Follow)->getTable())
+                    ->where('followed_profile_id', $this->profile->id);
+            });
         })
             ->whereNull('parent_id')
             ->with([
                 'profile',
-                'reposts' => fn($query) => $query
+                'reposts' => fn ($query) => $query
                     ->withCount([
                         'likes',
                         'replies',
-                        'reposts'
+                        'reposts',
                     ])
                     ->withExists([
-                        'likeProfiles as is_like' => fn($query) => $query->where('profiles.id', $this->profile->id),
-                        'replies as is_reply' => fn($query) => $query->where('profile_id', $this->profile->id),
-                        'reposts as is_repost' => fn($query) => $query->where('profile_id', $this->profile->id),
+                        'likeProfiles as is_like' => fn ($query) => $query->where('profiles.id', $this->profile->id),
+                        'replies as is_reply' => fn ($query) => $query->where('profile_id', $this->profile->id),
+                        'reposts as is_repost' => fn ($query) => $query->where('profile_id', $this->profile->id),
                     ])
                     ->with('profile'),
             ])
@@ -62,9 +61,9 @@ class TimelineQuery
                 'reposts',
             ])
             ->withExists([
-                'likeProfiles as is_like' => fn($query) => $query->where('profiles.id', $this->profile->id),
-                'replies as is_reply' => fn($query) => $query->where('profile_id', $this->profile->id),
-                'reposts as is_repost' => fn($query) => $query->where('profile_id', $this->profile->id),
+                'likeProfiles as is_like' => fn ($query) => $query->where('profiles.id', $this->profile->id),
+                'replies as is_reply' => fn ($query) => $query->where('profile_id', $this->profile->id),
+                'reposts as is_repost' => fn ($query) => $query->where('profile_id', $this->profile->id),
             ])
             ->latest();
     }

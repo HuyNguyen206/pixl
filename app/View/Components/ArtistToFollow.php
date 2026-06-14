@@ -28,15 +28,15 @@ class ArtistToFollow extends Component
     public function render(): View|Closure|string
     {
         if (Auth::check()) {
-//            $this->artists = Profile::where(function ($query) {
-//                $query->whereHas('followers', function ($query) {
-//                    $query->where('follower_profile_id',
-//                        '<>', \auth()->user()->profile->id);
-//                })
-//                    ->orWhereDoesntHave('followers');
-//            })
-//            ->where('id', '<>', \auth()->user()->profile->id)
-//                ->inRandomOrder()->get();
+            //            $this->artists = Profile::where(function ($query) {
+            //                $query->whereHas('followers', function ($query) {
+            //                    $query->where('follower_profile_id',
+            //                        '<>', \auth()->user()->profile->id);
+            //                })
+            //                    ->orWhereDoesntHave('followers');
+            //            })
+            //            ->where('id', '<>', \auth()->user()->profile->id)
+            //                ->inRandomOrder()->get();
 
             $query = Profile::whereDoesntHave('followers', function ($query) {
                 $query->where('follower_profile_id', \auth()->user()->profile->id);

@@ -14,9 +14,9 @@ class Reply extends Component
      */
     public function __construct(
         public PostModel $reply,
-        public bool      $showEngagement = true,
-        public bool      $showReplies = false
-    ){}
+        public bool $showEngagement = true,
+        public bool $showReplies = false
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

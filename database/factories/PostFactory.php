@@ -21,7 +21,7 @@ class PostFactory extends Factory
         return [
             'parent_id' => null,
             'repost_of_id' => null,
-            'profile_id' => fn() => Profile::factory(),
+            'profile_id' => fn () => Profile::factory(),
             'content' => $this->faker->realText(200),
         ];
     }
@@ -38,7 +38,7 @@ class PostFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'repost_of_id' => $originalPost->id,
-            'content' => null
+            'content' => null,
         ]);
     }
 

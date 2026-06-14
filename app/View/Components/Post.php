@@ -14,10 +14,9 @@ class Post extends Component
      */
     public function __construct(
         public PostModel $post,
-        public bool      $showEngagement = true,
-        public bool      $showReplies = false
-    )
-    {
+        public bool $showEngagement = true,
+        public bool $showReplies = false
+    ) {
         //
     }
 

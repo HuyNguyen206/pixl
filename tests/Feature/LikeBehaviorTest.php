@@ -1,11 +1,15 @@
 <?php
 
+use App\Models\Like;
+use App\Models\Post;
+use App\Models\Profile;
+
 test('profile can like post', function () {
-    $profile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
 
-    $post = \App\Models\Post::factory()->create();
+    $post = Post::factory()->create();
 
-    $like = \App\Models\Like::createLike($profile, $post);
+    $like = Like::createLike($profile, $post);
 
     expect($like->profile)->is($profile)->toBeTrue()
         ->and($like->post)->is($post)->toBeTrue()
@@ -15,25 +19,25 @@ test('profile can like post', function () {
 });
 
 test('can no create duplicate like', function () {
-    $profile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
 
-    $post = \App\Models\Post::factory()->create();
+    $post = Post::factory()->create();
 
-    $like = \App\Models\Like::createLike($profile, $post);
-    $like2 = \App\Models\Like::createLike($profile, $post);
+    $like = Like::createLike($profile, $post);
+    $like2 = Like::createLike($profile, $post);
 
     expect($like->id)->toBe($like2->id);
 });
 
 test('can remove a like', function () {
-    $profile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
 
-    $post = \App\Models\Post::factory()->create();
+    $post = Post::factory()->create();
 
-    $like = \App\Models\Like::createLike($profile, $post);
+    $like = Like::createLike($profile, $post);
 
-    $success = \App\Models\Like::removeLike($profile, $post);
+    $success = Like::removeLike($profile, $post);
 
     expect($post->likes)->toHaveCount(0)
-    ->and($success)->toBe(1);
+        ->and($success)->toBe(1);
 });

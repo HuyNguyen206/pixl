@@ -16,7 +16,7 @@ back
             @forelse($posts as $post)
                 <x-post
                     :post="$post"
-                    :show-engagement="false"
+                    :show-engagement="true"
                     :show-replies="false"
                 />
             @empty

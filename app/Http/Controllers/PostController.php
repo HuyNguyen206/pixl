@@ -7,8 +7,6 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Queries\PostThreadQuery;
 use App\Queries\TimelineQuery;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -17,12 +15,12 @@ class PostController extends Controller
     {
         $profile = auth()->user()->profile;
         $posts = Post::take(4)->get();
-//        $posts = Post::where('profile_id', $profile->id)
-//            ->orWhereIn('profile_id', function ($query) {
-//                Follow::where('followed_profile_id', auth()->user()->profile->id)
-//                    ->select('follower_profile_id');
-////                $profile->followings()->pluck('profiles.id')
-//            })->withCount(['likes', 'replies', 'reposts'])->latest()->get();
+        //        $posts = Post::where('profile_id', $profile->id)
+        //            ->orWhereIn('profile_id', function ($query) {
+        //                Follow::where('followed_profile_id', auth()->user()->profile->id)
+        //                    ->select('follower_profile_id');
+        // //                $profile->followings()->pluck('profiles.id')
+        //            })->withCount(['likes', 'replies', 'reposts'])->latest()->get();
 
         $posts = TimelineQuery::forViewer($profile)->get();
 
@@ -38,9 +36,9 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-//        dd(123);
+        //        dd(123);
         $request->validate([
-            'content' => 'nullable|string|max:1000'
+            'content' => 'nullable|string|max:1000',
         ]);
 
         $request->user()->profile->posts()->create([
@@ -53,7 +51,7 @@ class PostController extends Controller
     public function storeReply(Profile $profile, Post $post, Request $request)
     {
         $request->validate([
-            'content' => 'required|string|max:1000'
+            'content' => 'required|string|max:1000',
         ]);
 
         $post->replies()->create([
@@ -76,7 +74,7 @@ class PostController extends Controller
     public function storeQuote(Profile $profile, Post $post, Request $request)
     {
         $request->validate([
-            'content' => 'required|string|max:1000'
+            'content' => 'required|string|max:1000',
         ]);
 
         $post->reposts()->create([

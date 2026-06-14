@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 

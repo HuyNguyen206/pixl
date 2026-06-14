@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
+use Database\Factories\ProfileFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Profile extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProfileFactory> */
+    /** @use HasFactory<ProfileFactory> */
     use HasFactory;
 
     public function user(): BelongsTo
@@ -36,9 +36,6 @@ class Profile extends Model
 
     /**
      * The profiles that follow this profile.
-     *
-     *
-     * @return BelongsToMany
      */
     public function followers(): BelongsToMany
     {
@@ -52,8 +49,6 @@ class Profile extends Model
 
     /**
      * The profiles that this profile follows
-     *
-     * @return BelongsToMany
      */
     public function followings(): BelongsToMany
     {
@@ -65,9 +60,5 @@ class Profile extends Model
         )->withTimestamps();
     }
 
-    public static function createFollow(Profile $follower, Profile $following)
-    {
-
-    }
-
+    public static function createFollow(Profile $follower, Profile $following) {}
 }

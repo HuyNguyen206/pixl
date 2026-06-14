@@ -1,21 +1,22 @@
 <?php
 
 use App\Models\Follow;
+use App\Models\Profile;
 
 test('profile can not follow itself', function () {
-   $profile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
 
-    expect(fn() => Follow::createFollow($profile, $profile))
+    expect(fn () => Follow::createFollow($profile, $profile))
         ->toThrow(InvalidArgumentException::class);
 
     expect($profile->followings)->contains($profile)->toBeFalse();
 });
 
 test('profile can follow another profile', function () {
-    $profile = \App\Models\Profile::factory()->create();
-    $anotherProfile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
+    $anotherProfile = Profile::factory()->create();
 
-    $follow = App\Models\Follow::createFollow($profile, $anotherProfile);
+    $follow = Follow::createFollow($profile, $anotherProfile);
 
     expect($profile->followings)->contains($anotherProfile)->toBeTrue();
     expect($anotherProfile->followers)->contains($profile)->toBeTrue();
@@ -25,10 +26,10 @@ test('profile can follow another profile', function () {
 });
 
 test('profile can unfollow another profile', function () {
-    $profile = \App\Models\Profile::factory()->create();
-    $anotherProfile = \App\Models\Profile::factory()->create();
+    $profile = Profile::factory()->create();
+    $anotherProfile = Profile::factory()->create();
 
-    $follow = App\Models\Follow::createFollow($profile, $anotherProfile);
+    $follow = Follow::createFollow($profile, $anotherProfile);
 
     Follow::unfollow($profile, $anotherProfile);
 

@@ -10,5 +10,16 @@
                 "boost:mcp"
             ]
         }
+    },
+    "lsp": {
+        "php": {
+            "command": [
+                "./node_modules/.bin/intelephense",
+                "--stdio"
+            ],
+            "extensions": [
+                "php"
+            ]
+        }
     }
 }

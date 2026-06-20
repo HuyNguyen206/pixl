@@ -5,7 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('welcome'));
+Route::get('/', fn () => \Inertia\Inertia::render('welcome', [
+    'greeting' => 'Hello World'
+]));
 
 Route::middleware('auth')->group(function () {
     Route::get('home', [PostController::class, 'index'])->name('posts.index');

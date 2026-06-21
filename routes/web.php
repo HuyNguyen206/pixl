@@ -5,9 +5,10 @@ use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => \Inertia\Inertia::render('welcome', [
-    'greeting' => 'Hello World'
-]));
+//Route::get('/', fn () => \Inertia\Inertia::render('welcome', [
+//    'greeting' => 'Hello World'
+//]));
+Route::redirect('/', '/home');
 
 Route::middleware('auth')->group(function () {
     Route::get('home', [PostController::class, 'index'])->name('posts.index');
@@ -31,7 +32,7 @@ Route::get('/dev/login', function () {
     request()->session()->regenerate();
 
     return redirect()->intended(route('profiles.show', $user->profile));
-});
+})->name('login');
 
 Route::get('/dev/logout', function () {
     Auth::logout();

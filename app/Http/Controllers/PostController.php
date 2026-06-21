@@ -8,6 +8,7 @@ use App\Models\Profile;
 use App\Queries\PostThreadQuery;
 use App\Queries\TimelineQuery;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -24,7 +25,8 @@ class PostController extends Controller
 
         $posts = TimelineQuery::forViewer($profile)->get();
 
-        return view('posts.index', compact('posts', 'profile'));
+        return Inertia::render('Posts/Index', compact('posts', 'profile'));
+//        return view('posts.index', compact('posts', 'profile'));
     }
 
     public function show(Profile $profile, Post $post)

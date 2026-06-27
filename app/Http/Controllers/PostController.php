@@ -25,6 +25,8 @@ class PostController extends Controller
 
         $posts = TimelineQuery::forViewer($profile)->get();
 
+        $profile = $profile->toResource();
+
         return Inertia::render('Posts/Index', compact('posts', 'profile'));
 //        return view('posts.index', compact('posts', 'profile'));
     }

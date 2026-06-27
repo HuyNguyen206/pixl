@@ -5,7 +5,7 @@
 <template>
     <nav class="">
         <ol class="flex flex-col gap-4">
-            <li><a class="hover:underline" href="route('posts.index')">Home</a></li>
+            <li><a class="hover:underline" :href="route('posts.index')">Home</a></li>
             <li><a class="hover:underline" href="">Explorer</a></li>
             <li class="-ml-4 flex items-center gap-2">
                 <div class="bg-pixl size-2 shrink-0"></div>

@@ -1,22 +1,15 @@
 <script setup>
 
+import BookmarkIcon from "./Icons/BookmarkIcon.vue";
 </script>
 
 <template>
     <div class="flex gap-1 items-center">
         <button class="hover:text-pixl">
-            <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
-                 xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M6.75 6L7.5 5.25H16.5L17.25 6V19.3162L12 16.2051L6.75 19.3162V6ZM8.25 6.75V16.6838L12 14.4615L15.75 16.6838V6.75H8.25Z"
-                />
-            </svg>
+            <BookmarkIcon/>
         </button>
         <span class="text-pixl-light/50 text-sm">Save</span>
     </div>
 
 </template>
 
-<style scoped>
-
-</style>

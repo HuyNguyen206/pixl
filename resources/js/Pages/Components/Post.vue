@@ -1,10 +1,10 @@
 <script setup>
 import Reply from "./Reply.vue";
-import LikeButton from "./LikeButton.vue";
 import ReplyButton from "./ReplyButton.vue";
 import RepostButton from "./RepostButton.vue";
 import SaveButton from "./SaveButton.vue";
 import ShareButton from "./ShareButton.vue";
+import LikeButton from "./LikeButton.vue";
 
 defineProps({
     post: Object,
@@ -30,8 +30,8 @@ defineProps({
 <!--                        <a href="{{route('profiles.show', $post->profile)}}" class="hover:underline !text-pixl-light/50">{{$post->profile->display_name}}</a>-->
 <!--                        <a href="{{route('posts.show', [$post->profile, $post])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</a>-->
 
-                        <a href="route('profiles.show', $post->profile)" class="hover:underline !text-pixl-light/50">{{ post.profile.display_name }}</a>
-                        <a href="route('posts.show', [$post->profile, $post])" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
+                        <a :href="route('profiles.show', post.profile)" class="hover:underline !text-pixl-light/50">{{ post.profile.display_name }}</a>
+                        <a :href="route('posts.show', [post.profile, post])" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
                     </div>
                     <button class="flex gap-1 py-2 group">
                         <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>

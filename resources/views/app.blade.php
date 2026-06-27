@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="color-scheme" content="dark">
     <title>Pixl</title>
+    @routes
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <x-inertia::head />
 </head>

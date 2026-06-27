@@ -1,6 +1,5 @@
 <script setup>
 import ReplyButton from "./ReplyButton.vue";
-import LikeButton from "./LikeButton.vue";
 import RepostButton from "./RepostButton.vue";
 import SaveButton from "./SaveButton.vue";
 import ShareButton from "./ShareButton.vue";
@@ -28,8 +27,8 @@ defineProps({
                 <div class="mt-4 grow text-pixl-light/50 pb-4">
                     <div class="flex gap-2 justify-between">
                         <div class="flex gap-2">
-                            <a href="{{route('profiles.show', reply.profile)}}" class="hover:underline !text-pixl-light/50">{{reply.profile.display_name}}</a>
-                            <a href="{{route('posts.show', [reply.profile, reply])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{reply.created_at}} {{"@{reply.profile.handle}"}}</a>
+                            <a :href="route('profiles.show', reply.profile)" class="hover:underline !text-pixl-light/50">{{reply.profile.display_name}}</a>
+                            <a :href="route('posts.show', [reply.profile, reply])" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{reply.created_at}} {{"@{reply.profile.handle}"}}</a>
                         </div>
                     </div>
                 </div>

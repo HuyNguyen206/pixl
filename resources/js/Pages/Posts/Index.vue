@@ -29,7 +29,7 @@ defineProps({
                         :label="'Post Body'"
                         :name="'content'"
                         :place-holder="`What's on ${profile.handle}?`"
-                        action="route('posts.store')"
+                        :action="route('posts.store')"
                     />
 <!--                <x-post-form-->
 <!--                    :label="'Post Body'"-->

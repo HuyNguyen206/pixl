@@ -28,7 +28,7 @@ class PostController extends Controller
         $profile = $profile->toResource();
 
         return Inertia::render('Posts/Index', compact('posts', 'profile'));
-//        return view('posts.index', compact('posts', 'profile'));
+        //        return view('posts.index', compact('posts', 'profile'));
     }
 
     public function show(Profile $profile, Post $post)
@@ -41,8 +41,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //        dd(123);
-        $request->validate([
-            'content' => 'nullable|string|max:1000',
+        $data = $request->validate([
+            'content' => 'nullable|string|min:3|max:1000',
         ]);
 
         $request->user()->profile->posts()->create([

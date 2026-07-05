@@ -31,7 +31,7 @@ defineProps({
 <!--                        <a href="{{route('posts.show', [$post->profile, $post])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</a>-->
 
                         <a :href="route('profiles.show', post.profile)" class="hover:underline !text-pixl-light/50">{{ post.profile.display_name }}</a>
-                        <a :href="route('posts.show', [post.profile, post])" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
+                        <a :href="route('posts.show', [post.profile, post])" class="text-sm text-pixl-light/50">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
                     </div>
                     <button class="flex gap-1 py-2 group">
                         <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
@@ -40,8 +40,8 @@ defineProps({
 
                     </button>
                 </div>
-                <p class="mt-3 [&_a]:text-pixl [&_a]:hover:underline">
-<!--                    {{$post->content}}-->
+                <p class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light">
+                    {{ post.content }}
 <!--                    @if($post->parentRepost)-->
                     <blockquote v-if="post.parentRepost" class="p-4 my-4 border-s-4 border-default bg-neutral-secondary-soft">
 <!--                        <p class="text-xl italic font-medium leading-relaxed text-heading">-->

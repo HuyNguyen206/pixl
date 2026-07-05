@@ -16,7 +16,7 @@ import Logo from "../Pages/Components/Icons/Logo.vue";
             </div>
 
         </header>
-        <div class="h-full">
+        <div class="h-full overflow-y-auto">
             <slot/>
         </div>
 

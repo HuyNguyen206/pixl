@@ -15,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $profile = auth()->user()->profile;
-        $posts = Post::take(4)->get();
+//        $posts = Post::take(4)->get();
         //        $posts = Post::where('profile_id', $profile->id)
         //            ->orWhereIn('profile_id', function ($query) {
         //                Follow::where('followed_profile_id', auth()->user()->profile->id)
@@ -23,8 +23,8 @@ class PostController extends Controller
         // //                $profile->followings()->pluck('profiles.id')
         //            })->withCount(['likes', 'replies', 'reposts'])->latest()->get();
 
-        $posts = TimelineQuery::forViewer($profile)->get();
-
+        $posts = TimelineQuery::forViewer($profile)->get()->toResourceCollection();
+//        dd($posts);
         $profile = $profile->toResource();
 
         return Inertia::render('Posts/Index', compact('posts', 'profile'));

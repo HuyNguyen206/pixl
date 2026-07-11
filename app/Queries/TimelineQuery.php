@@ -41,6 +41,7 @@ class TimelineQuery
         })
             ->whereNull('parent_id')
             ->with([
+                'parentRepost.profile',
                 'profile',
                 'reposts' => fn ($query) => $query
                     ->withCount([

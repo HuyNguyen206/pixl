@@ -1,6 +1,7 @@
 <script setup>
 
 import HeartIcon from "./Icons/HeartIcon.vue";
+import {Form} from "@inertiajs/vue3";
 
 defineProps({
     post: Object,
@@ -9,9 +10,12 @@ defineProps({
 
 <template>
     <div class="flex gap-2">
+        <Form method="POST" :action="route('posts.like-toggle', [post.profile, post])" reset-on-success #default="{ errors }">
+
         <button class="hover:text-pixl" :class="{ 'text-pixl': post.is_like }">
             <HeartIcon/>
         </button>
+        </Form>
         <span class="text-sm">{{ post.likes_count }}</span>
     </div>
 

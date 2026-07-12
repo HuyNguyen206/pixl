@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex gap-2">
+    <div class="flex gap-2 items-center">
         <button class="hover:text-pixl" :class="{ 'text-pixl': post.is_reply }">
             <svg class="w-6" viewBox="0 0 24 24" fill="currentColor"
                  xmlns="http://www.w3.org/2000/svg">

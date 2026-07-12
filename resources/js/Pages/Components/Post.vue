@@ -5,6 +5,8 @@ import RepostButton from "./RepostButton.vue";
 import SaveButton from "./SaveButton.vue";
 import ShareButton from "./ShareButton.vue";
 import LikeButton from "./LikeButton.vue";
+import ReplyForm from "./ReplyForm.vue";
+import {ref} from "vue";
 
 defineProps({
     post: Object,
@@ -15,8 +17,10 @@ defineProps({
     showReplies: {
         type: Boolean,
         default: true
-    },
+    }
 })
+
+let showReplyForm = ref(false);
 </script>
 
 <template>
@@ -40,7 +44,7 @@ defineProps({
 
                     </button>
                 </div>
-                <p class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light">
+                <div class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light">
                     {{ post.content }}
 <!--                    @if($post->parentRepost)-->
                     <blockquote v-if="post.parent_repost" class="p-4 my-4 border-s-4 border-default bg-neutral-secondary-soft">
@@ -56,15 +60,15 @@ defineProps({
                     </blockquote>
 <!--                    @endif-->
 
-                </p>
+                </div>
 <!--                @if($showEngagement)-->
                 <div v-if="showEngagement" class="flex justify-between mt-4 pb-4">
 
                     <!--Meta left action start-->
                     <div class="flex justify-between">
-                        <div class="flex gap-6">
+                        <div class="flex gap-6 items-center">
                             <LikeButton :post="post"></LikeButton>
-                            <ReplyButton :post="post"></ReplyButton>
+                            <ReplyButton :post="post" @click="showReplyForm=!showReplyForm"></ReplyButton>
                             <RepostButton :post="post"></RepostButton>
                         </div>
                     </div>
@@ -81,7 +85,8 @@ defineProps({
                     <!--Meta right action end-->
                 </div>
 <!--                @endif-->
-                <x-reply-form post="$post"></x-reply-form>
+<!--                <x-reply-form post="$post"></x-reply-form>-->
+                <ReplyForm :post="post" v-show="showReplyForm" @success="showReplyForm=false"></ReplyForm>
 <!--                @if($showReplies)-->
                 <ol class="" v-if="showReplies">
                     <Reply

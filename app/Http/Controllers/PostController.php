@@ -26,7 +26,7 @@ class PostController extends Controller
         $posts = TimelineQuery::forViewer($profile)->get()->toResourceCollection();
 //        dd($posts);
         $profile = $profile->toResource();
-
+//    dd($posts);
         return Inertia::render('Posts/Index', compact('posts', 'profile'));
         //        return view('posts.index', compact('posts', 'profile'));
     }
@@ -59,7 +59,7 @@ class PostController extends Controller
         ]);
 
         $post->replies()->create([
-            'profile_id' => $profile->id,
+            'profile_id' => $request->user()->profile->id,
             'content' => $request->input('content'),
         ]);
 
@@ -69,7 +69,7 @@ class PostController extends Controller
     public function storeRepost(Profile $profile, Post $post)
     {
         $post->reposts()->create([
-            'profile_id' => $profile->id,
+            'profile_id' => request()->user()->profile->id,
         ]);
 
         return redirect()->route('posts.index');
@@ -82,7 +82,7 @@ class PostController extends Controller
         ]);
 
         $post->reposts()->create([
-            'profile_id' => $profile->id,
+            'profile_id' => request()->user()->profile->id,
             'content' => $request->input('content'),
         ]);
 

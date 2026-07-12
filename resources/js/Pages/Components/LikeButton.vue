@@ -9,8 +9,8 @@ defineProps({
 </script>
 
 <template>
-    <div class="flex gap-2">
-        <Form method="POST" :action="route('posts.like-toggle', [post.profile, post])" reset-on-success #default="{ errors }">
+    <div class="flex gap-2 items-center">
+        <Form class="flex" method="POST" :action="route('posts.like-toggle', [post.profile, post])" reset-on-success #default="{ errors }">
 
         <button class="hover:text-pixl" :class="{ 'text-pixl': post.is_like }">
             <HeartIcon/>

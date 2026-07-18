@@ -33,6 +33,7 @@ class PostThreadQuery
                         ->oldest(),
                 ])
                 ->oldest(),
+            'profile' => fn ($q) => $q->withCount(['followers', 'followings']),
         ])
             ->loadCount(['likes', 'replies', 'reposts'])
             ->loadExists([

@@ -23,7 +23,7 @@ class ProfileFactory extends Factory
             'display_name' => $this->faker->name(),
             'handle' => $handle = $this->faker->unique()->userName(),
             'bio' => $this->faker->sentence(),
-            'avatar_url' => 'https://dummyimage.com/98x90/eee/000',
+            'avatar_url' => 'https://i.pravatar.cc/90?u=' . $handle,
             'cover_url' => 'https://dummyimage.com/1400x640/555/ECA749?text='.$handle,
         ];
     }

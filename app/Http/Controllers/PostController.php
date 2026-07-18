@@ -35,7 +35,7 @@ class PostController extends Controller
     {
         PostThreadQuery::getFor($post, \Auth::user()?->profile);
 
-        return view('posts.show', compact('post'));
+        return Inertia::render('Posts/Show', compact('post'));
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class PostController extends Controller
             'content' => $request->input('content'),
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 
     public function storeReply(Profile $profile, Post $post, Request $request)
@@ -63,7 +63,7 @@ class PostController extends Controller
             'content' => $request->input('content'),
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 
     public function storeRepost(Profile $profile, Post $post)
@@ -72,7 +72,7 @@ class PostController extends Controller
             'profile_id' => request()->user()->profile->id,
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 
     public function storeQuote(Profile $profile, Post $post, Request $request)
@@ -86,14 +86,14 @@ class PostController extends Controller
             'content' => $request->input('content'),
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 
     public function likeToggle(Profile $profile, Post $post)
     {
         $post->likeProfiles()->toggle($profile);
 
-        return redirect()->route('posts.index');
+        return redirect()->back();
     }
 
     public function destroyQuote(Profile $profile, Post $post)

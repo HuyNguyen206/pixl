@@ -26,12 +26,13 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/dev/login', function () {
     //   $user = \App\Models\User::query()->inRandomOrder()->first();
-    $user = User::query()->find(452);
+    $user = User::query()->find(1);
 
     Auth::login($user);
     request()->session()->regenerate();
 
-    return redirect()->intended(route('profiles.show', $user->profile));
+//    return redirect()->intended(route('profiles.show', $user->profile));
+    return redirect()->intended(route('posts.index'));
 })->name('login');
 
 Route::get('/dev/logout', function () {

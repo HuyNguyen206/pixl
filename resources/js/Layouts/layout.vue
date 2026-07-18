@@ -8,8 +8,8 @@ import Logo from "../Pages/Components/Icons/Logo.vue";
 <template>
     <div class="p-2 bg-pixl-dark text-pixl-light flex xl:gap-16 gap-4 px-4 h-dvh overflow-clip justify-between">
         <header class="flex-col justify-between gap-8 w-40 shrink-0 pl-4 ml-24 lg:flex hidden">
-            <div class="flex flex-col gap-8 justify-between ">
-                <a href="/">
+            <div class="flex min-h-0 flex-1 flex-col gap-8">
+                <a href="/" class="shrink-0">
                     <Logo/>
                 </a>
                 <Navigation></Navigation>

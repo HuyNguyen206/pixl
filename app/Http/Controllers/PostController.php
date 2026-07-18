@@ -100,7 +100,7 @@ class PostController extends Controller
     {
         $currentProfile = auth()->user()->profile;
 
-        if ($profile->id === $currentProfile->id) {
+        if (\Auth::user()->can('delete', $post)) {
             $post->delete();
 
             return redirect()->back();
@@ -113,6 +113,17 @@ class PostController extends Controller
 
             return redirect()->back();
         }
+
+        return redirect()->back();
+    }
+
+    public function destroy(Profile $profile, Post $post)
+    {
+        if (!\Auth::user()->can('delete', $post)) {
+            abort(403, 'You are not authorized to delete this post.');
+        }
+
+        $post->delete();
 
         return redirect()->back();
     }

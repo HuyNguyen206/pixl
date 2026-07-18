@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
         Route::post('{profile:handle}/{post}/reposts', [PostController::class, 'storeRepost'])->name('posts.repost');
         Route::post('{profile:handle}/{post}/quotes', [PostController::class, 'storeQuote'])->name('posts.quote');
         Route::delete('{profile:handle}/{post}/quotes', [PostController::class, 'destroyQuote'])->name('posts.quote.delete');
+        Route::delete('{profile:handle}/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
         Route::post('{profile:handle}/{post}/likes/toggle', [PostController::class, 'likeToggle'])->name('posts.like-toggle');
     });
 });

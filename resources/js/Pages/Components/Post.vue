@@ -7,6 +7,7 @@ import ShareButton from "./ShareButton.vue";
 import LikeButton from "./LikeButton.vue";
 import ReplyForm from "./ReplyForm.vue";
 import {ref} from "vue";
+import Dropdown from "./Dropdown.vue";
 
 defineProps({
     post: Object,
@@ -37,12 +38,14 @@ let showReplyForm = ref(false);
                         <a :href="route('profiles.show', post.profile)" class="hover:underline !text-pixl-light/50">{{ post.profile.display_name }}</a>
                         <a :href="route('posts.show', [post.profile, post])" class="text-sm !text-pixl-light/50">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
                     </div>
-                    <button class="flex gap-1 py-2 group">
-                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
-                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
-                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>
+                    <Dropdown :post="post"/>
 
-                    </button>
+<!--                    <button class="flex gap-1 py-2 group">-->
+<!--                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>-->
+<!--                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>-->
+<!--                        <span class="bg-pixl-light/50 size-1 group-hover:bg-pixl-light/70"></span>-->
+
+<!--                    </button>-->
                 </div>
                 <div class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light">
                     {{ post.content }}

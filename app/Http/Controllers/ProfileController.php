@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Queries\ProfilePostQuery;
 use App\Queries\RepliesQuery;
+use Inertia\Inertia;
 
 class ProfileController extends Controller
 {
@@ -14,7 +15,7 @@ class ProfileController extends Controller
 
         $posts = ProfilePostQuery::for($profile, auth()->user()?->profile)->get();
 
-        return view('profile.show', compact('profile', 'posts'));
+        return Inertia::render('Profile/Show', compact('posts', 'profile'));
     }
 
     public function replies(Profile $profile)
@@ -22,7 +23,7 @@ class ProfileController extends Controller
         $profile->loadCount(['followers', 'followings']);
         $posts = RepliesQuery::for($profile, auth()->user()?->profile)->get();
 
-        return view('profile.replies', compact('profile', 'posts'));
+        return Inertia::render('Profile/Show', compact('posts', 'profile'));
     }
 
     public function followToggle(Profile $profile)

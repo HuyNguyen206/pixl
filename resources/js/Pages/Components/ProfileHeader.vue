@@ -1,4 +1,6 @@
 <script setup>
+import {Link} from "@inertiajs/vue3";
+
 defineProps({
     profile: Object
 })
@@ -7,7 +9,7 @@ defineProps({
 <template>
     <!--       User profile start-->
     <div class="flex flex-wrap flex-row justify-between gap-2 items-end">
-        <div class="flex gap-4 items-end">
+        <div class="flex gap-4 items-end mt-5">
             <img class="md:size-30 lg:40 size-20 object-cover" :src="profile.avatar_url" alt="">
             <div class="flex flex-col gap-2">
                 <p>{{ profile.display_name }}</p>
@@ -33,10 +35,10 @@ defineProps({
     <!-- Navigation tab-->
     <ul class="flex gap-6 justify-end">
         <li>
-            <a :href="route('profiles.show', profile)" class="text-pixl-light/60!">Posts</a>
+            <Link :href="route('profiles.show', profile)" :class="route().current('profiles.show') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Posts</Link>
         </li>
         <li>
-            <a :href="route('profiles.replies', profile)" class="text-pixl-light/60!">Replies</a>
+            <Link :href="route('profiles.replies', profile)" :class="route().current('profiles.replies') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Replies</Link>
         </li>
         <li>
             <a href="" class="text-pixl-light/60!">Highlight</a>

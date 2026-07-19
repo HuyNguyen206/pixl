@@ -1,9 +1,23 @@
 <script setup>
-import {Link} from "@inertiajs/vue3";
+import {Link, usePage} from "@inertiajs/vue3";
+import {computed, inject} from "vue";
 
-defineProps({
+const props = defineProps({
     profile: Object
 })
+
+const route = inject('route')
+const page = usePage()
+
+const normalize = (url) => url.split('?')[0].replace(/\/+$/, '') || '/'
+
+const currentPath = computed(() => normalize(page.url))
+
+/**
+ * Inertia's page URL is reactive and always matches the rendered page,
+ * unlike route().current() which reads a non-reactive location.
+ */
+const isActive = (name) => currentPath.value === normalize(route(name, props.profile, false))
 </script>
 
 <template>
@@ -35,10 +49,10 @@ defineProps({
     <!-- Navigation tab-->
     <ul class="flex gap-6 justify-end">
         <li>
-            <Link :href="route('profiles.show', profile)" :class="route().current('profiles.show') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Posts</Link>
+            <Link :href="route('profiles.show', profile)" :class="isActive('profiles.show') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Posts</Link>
         </li>
         <li>
-            <Link :href="route('profiles.replies', profile)" :class="route().current('profiles.replies') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Replies</Link>
+            <Link :href="route('profiles.replies', profile)" :class="isActive('profiles.replies') ? 'text-pixl-light!' : 'text-pixl-light/60!'">Replies</Link>
         </li>
         <li>
             <a href="" class="text-pixl-light/60!">Highlight</a>

@@ -22,7 +22,11 @@ import Logo from "../Pages/Components/Icons/Logo.vue";
 
         <Aside/>
     </div>
-
+        <footer class="mt-4">
+            <p class="text-center">That all, folks</p>
+            <hr class="border-b-pixl-light/10 my-4">
+            <div class="h-12 inset-x-0 bg-[url(/resources/images/white-noise.gif)]"></div>
+        </footer>
 
 </template>
 

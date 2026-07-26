@@ -3,6 +3,7 @@
 import Navigation from "../Pages/Components/Navigation.vue";
 import Aside from "../Pages/Components/Aside.vue";
 import Logo from "../Pages/Components/Icons/Logo.vue";
+import FlashMessage from "../Pages/Components/FlashMessage.vue";
 </script>
 
 <template>
@@ -27,7 +28,7 @@ import Logo from "../Pages/Components/Icons/Logo.vue";
             <hr class="border-b-pixl-light/10 my-4">
             <div class="h-12 inset-x-0 bg-[url(/resources/images/white-noise.gif)]"></div>
         </footer>
-
+    <FlashMessage/>
 </template>
 
 <style scoped>

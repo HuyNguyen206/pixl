@@ -24,7 +24,7 @@ import {Link} from "@inertiajs/vue3";
             </ol>
         </nav>
         <!--     Button   -->
-        <div class="flex shrink-0 flex-col gap-4 pb-10">
+        <div class="flex shrink-0 flex-col gap-4 pb-10" v-if="$page.props.auth.user">
     <!--        @if(!request()->routeIs('posts.index'))-->
             <Link v-show="$page.component !== 'Posts/Index'" :href="route('posts.index')"  class="text-center bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark text-center pointer-fine:">Post</Link>
     <!--        @endif-->

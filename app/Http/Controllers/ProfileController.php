@@ -32,8 +32,16 @@ class ProfileController extends Controller
 
     public function followToggle(Profile $profile)
     {
-        $profile->followers()->toggle(auth()->user()->profile);
+        if ($profile->id === auth()->user()->profile->id) {
+            return redirect()->back()->with('fail', "You can not follow yourself.");
+        }
+        $profile->loadExists([
+            'followers as is_follow' => fn (Builder $query) => $query->where('follows.follower_profile_id', auth()->user()?->profile->id)
+        ]);
 
-        return redirect()->back();
+        $profile->followers()->toggle(auth()->user()->profile);
+        $action = $profile->is_follow ? 'unfollow' : 'follow';
+
+        return redirect()->back()->with('success', "You $action {$profile->handle} successfully.");
     }
 }

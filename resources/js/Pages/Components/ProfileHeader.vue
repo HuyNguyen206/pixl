@@ -30,7 +30,7 @@ const isActive = (name) => currentPath.value === normalize(route(name, props.pro
                 <a :href="route('profiles.show', profile)" class="text-pixl-light/40">{{ '@' + profile.handle }}</a>
             </div>
         </div>
-        <div class="">
+        <div class="" v-if="profile.can_follow">
             <Link :href="route('posts.follow-toggle', profile)" method="post" class="bg-pixl-light/10 text-pixl border border-transparent px-4 py-0.5 mr-4"
             >{{profile.is_follow ? 'Unfollow' : 'Follow'}}</Link>
         </div>

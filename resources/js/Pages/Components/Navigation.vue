@@ -31,7 +31,7 @@ import {Link} from "@inertiajs/vue3";
             <div class="flex gap-4">
                 <img class="size-10 object-cover isolate" :src="$page.props.auth.user.profile.avatar_url" alt="">
                 <div class="flex flex-col gap-2">
-                    <p>{{$page.props.auth.user.profile.display_name}}</p>
+                    <Link :href="route('profiles.show', $page.props.auth.user.profile.handle)">{{$page.props.auth.user.profile.display_name}}</Link>
                     <p class="text-pixl-light/40">@{{$page.props.auth.user.profile.handle}}</p>
                 </div>
                 <button class="flex gap-2">
@@ -40,6 +40,8 @@ import {Link} from "@inertiajs/vue3";
                     <span class="w-1 h-1 bg-pixl-light/20"></span>
                 </button>
             </div>
+            <Link :href="route('dev.logout')"  class="text-center bg-pixl border border-transparent px-4 py-0.5 text-pixl-dark text-center pointer-fine:">Logout</Link>
+
         </div>
         <!--    Button end-->
     </div>

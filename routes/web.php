@@ -1,17 +1,19 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', fn () => \Inertia\Inertia::render('welcome', [
+// Route::get('/', fn () => \Inertia\Inertia::render('welcome', [
 //    'greeting' => 'Hello World'
-//]));
-Route::redirect('/', '/home');
+// ]));
+
+Route::get('/', HomeController::class)->middleware('guest')->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::get('home', [PostController::class, 'index'])->name('posts.index');
+    Route::get('/home', [PostController::class, 'index'])->name('posts.index');
     Route::post('posts', [PostController::class, 'store'])->name('posts.store');
     Route::post('{profile:handle}/follows/toggle', [ProfileController::class, 'followToggle'])->name('posts.follow-toggle');
 
@@ -32,17 +34,17 @@ Route::get('/dev/login', function () {
     Auth::login($user);
     request()->session()->regenerate();
 
-//    return redirect()->intended(route('profiles.show', $user->profile));
+    //    return redirect()->intended(route('profiles.show', $user->profile));
     return redirect()->intended(route('posts.index'));
-})->name('login');
+})->name('dev.login');
 
 Route::get('/dev/logout', function () {
     Auth::logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
 
-    return redirect()->intended(route('feed'));
-});
+    return redirect()->intended(route('login'));
+})->name('dev.logout');
 
 Route::get('/{profile:handle}', [ProfileController::class, 'show'])->name('profiles.show');
 Route::get('/{profile:handle}/replies', [ProfileController::class, 'replies'])->name('profiles.replies');

@@ -12,10 +12,16 @@ class ProfileController extends Controller
 {
     public function show(Profile $profile)
     {
+        $authUser = auth()->user();
+
         $profile->loadCount(['followers', 'followings']);
         $profile->loadExists([
-            'followers as is_follow' => fn (Builder $query) => $query->where('follows.follower_profile_id', auth()->user()?->profile->id)
+            'followers as is_follow' => function (Builder $query) use ($authUser) {
+                return $query->where('follows.follower_profile_id', $authUser?->profile->id);
+            }
         ]);
+
+        $profile->can_follow = $authUser && $profile->id !== $authUser->profile->id;
 
         $posts = ProfilePostQuery::for($profile, auth()->user()?->profile)->get();
 

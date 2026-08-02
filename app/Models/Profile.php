@@ -61,4 +61,9 @@ class Profile extends Model
     }
 
     public static function createFollow(Profile $follower, Profile $following) {}
+
+    public function follow(Profile $followedProfile)
+    {
+        Follow::createFollow($this, $followedProfile);
+    }
 }

@@ -36,7 +36,7 @@ let showReplyForm = ref(false);
 <!--                        <a href="{{route('posts.show', [$post->profile, $post])}}" class="text-sm text-pixl-light/50 hover:text-pixl-light">{{$post->created_at->diffForHumans()}} {{"@{$post->profile->handle}"}}</a>-->
 
                         <a :href="route('profiles.show', post.profile)" class="hover:underline !text-pixl-light/50">{{ post.profile.display_name }}</a>
-                        <a :href="route('posts.show', [post.profile, post])" class="text-sm !text-pixl-light/50">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
+                        <a :href="route('posts.show', [post.profile, post])" class="text-sm !text-pixl-light/50" data-test="visit-post">{{ post.created_at }} "@{{ post.profile.handle }}"</a>
                     </div>
                     <Dropdown :post="post"/>
 
@@ -47,7 +47,7 @@ let showReplyForm = ref(false);
 
 <!--                    </button>-->
                 </div>
-                <div class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light">
+                <div class="mt-3 [&_a]:text-pixl [&_a]:hover:underline text-pixl-light" data-test="post-feed-item">
                     {{ post.content }}
 <!--                    @if($post->parentRepost)-->
                     <blockquote v-if="post.parent_repost" class="p-4 my-4 border-s-4 border-default bg-neutral-secondary-soft">

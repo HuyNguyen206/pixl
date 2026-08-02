@@ -23,3 +23,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+/tests/Browser/Screenshots/auth_user_can_view_their_timeline.png
+/tests/Browser/Screenshots/auth_user_follow_another_user.png
+/tests/Browser/Screenshots/it_like_a_post.png
+/tests/Browser/Screenshots/it_view_a_single_post.png

@@ -20,9 +20,18 @@ export default defineConfig({
         inertia(),
     ],
     server: {
-        host: '127.0.0.1',
+        // vite runs inside the app container, so bind every interface rather
+        // than just loopback, or the published port has nothing to forward to
+        host: '0.0.0.0',
+        port: 5173,
+        // fail loudly instead of drifting to 5174, which would publish the
+        // wrong port and write a stale URL into public/hot
+        strictPort: true,
         hmr: {
-            host: '127.0.0.1',
+            // this is what laravel-vite-plugin writes into public/hot, and it
+            // has to resolve from both sides: the host browser reaches it via
+            // the published port, the test browser via vite's own bind
+            host: 'localhost',
         },
         watch: {
             ignored: [

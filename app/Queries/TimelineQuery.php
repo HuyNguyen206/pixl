@@ -35,8 +35,8 @@ class TimelineQuery
         return Post::where(function ($query) {
             $query->where('profile_id', $this->profile->id);
             $query->orWhereIn('profile_id', function ($query) {
-                $query->select('follower_profile_id')->from((new Follow)->getTable())
-                    ->where('followed_profile_id', $this->profile->id);
+                $query->select('followed_profile_id')->from((new Follow)->getTable())
+                    ->where('follower_profile_id', $this->profile->id);
             });
         })
             ->whereNull('parent_id')
